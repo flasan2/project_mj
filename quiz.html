@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quiz — Golden Shopping Calhau</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "inverse-primary": "#735c00", "background": "#0a0a0a", "surface-tint": "#e9c349",
+        "on-secondary-fixed-variant": "#464747", "on-primary-fixed-variant": "#574500",
+        "surface-dim": "#0a0a0a", "secondary": "#c6c6c6", "on-tertiary-container": "#4e4432",
+        "tertiary-container": "#bfb19a", "inverse-surface": "#e5e2e1",
+        "secondary-fixed-dim": "#c6c6c6", "surface-container-high": "#2a2a2a",
+        "on-secondary": "#2f3131", "on-error": "#690005", "on-error-container": "#ffdad6",
+        "surface-bright": "#3a3939", "outline-variant": "#4d4635",
+        "on-secondary-container": "#b8b8b8", "on-tertiary-fixed-variant": "#4f4533",
+        "secondary-fixed": "#e3e2e2", "surface-variant": "#353534", "primary-fixed": "#ffe088",
+        "outline": "#99907c", "error-container": "#93000a", "on-primary": "#3c2f00",
+        "tertiary": "#dbccb4", "on-tertiary": "#382f1e", "on-surface": "#e5e2e1",
+        "surface-container-lowest": "#050505", "surface": "#0a0a0a", "tertiary-fixed": "#f0e0c8",
+        "on-surface-variant": "#d0c5af", "on-tertiary-fixed": "#221b0b",
+        "surface-container-highest": "#353534", "on-background": "#e5e2e1",
+        "on-primary-container": "#554300", "inverse-on-surface": "#313030",
+        "surface-container": "#151515", "tertiary-fixed-dim": "#d3c5ad",
+        "primary-container": "#d4af37", "on-primary-fixed": "#241a00",
+        "secondary-container": "#484949", "primary": "#f2ca50", "error": "#ffb4ab",
+        "primary-fixed-dim": "#e9c349", "surface-container-low": "#111111",
+        "on-secondary-fixed": "#1a1c1c"
+      },
+      borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+      fontFamily: { "headline": ["Noto Serif"], "body": ["Manrope"], "label": ["Manrope"] }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="css/quiz.css"/>
+</head>
+<body class="text-on-background font-body selection:bg-primary/30 min-h-screen flex flex-col relative overflow-x-hidden quiz-bg">
+<nav class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-primary/10">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-14">
+    <span class="font-headline font-bold text-primary text-sm tracking-widest uppercase hidden sm:block">Golden Shopping Calhau</span>
+    <div class="flex items-center w-full sm:w-auto justify-around sm:justify-end">
+      <a href="index.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Início</a>
+      <a href="forms.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Inscrição</a>
+      <a href="quiz.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-primary border-b-2 border-primary">Quiz</a>
+      <a href="votacao.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Votação</a>
+    </div>
+  </div>
+</nav>
+<div class="fixed inset-0 pointer-events-none opacity-30 z-0">
+  <div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(#ffe088 0.5px, transparent 0.5px); background-size: 60px 60px;"></div>
+</div>
+<main id="quiz-screen" class="flex-grow flex flex-col items-center justify-center px-4 pt-24 pb-16 relative z-10 stage-lights">
+  <div id="loading-state" class="flex flex-col items-center gap-4">
+    <span class="material-symbols-outlined text-primary text-5xl animate-spin">autorenew</span>
+    <p class="font-label text-on-surface-variant text-sm tracking-widest uppercase">Carregando perguntas...</p>
+  </div>
+  <div id="quiz-content" class="hidden w-full flex flex-col items-center">
+    <div class="w-full max-w-4xl mb-12">
+      <div class="flex justify-between items-end mb-4 px-2">
+        <div class="flex flex-col">
+          <span class="font-headline text-primary text-xs tracking-[0.3em] uppercase font-black mb-1">Status do Desafio</span>
+          <span id="progress-text" class="font-body text-white text-lg font-bold">Pergunta 1 <span class="text-white/40 font-normal ml-1">de 10</span></span>
+        </div>
+        <div class="text-right">
+          <span class="font-label text-primary/60 text-[10px] tracking-widest uppercase font-bold block mb-1">Progresso</span>
+          <span id="progress-pct" class="font-headline text-white text-lg font-black tracking-tighter">10%</span>
+        </div>
+      </div>
+      <div class="h-1 w-full bg-white/5 rounded-full relative overflow-visible">
+        <div id="progress-bar" class="absolute inset-0 h-full shimmer-gold rounded-full shadow-[0_0_15px_rgba(242,202,80,0.6)] z-10 transition-all duration-500" style="width: 10%"></div>
+        <div id="progress-moon" class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-20 transition-all duration-500" style="left: 10%">
+          <span class="material-symbols-outlined text-primary text-sm leading-none bg-background rounded-full p-0.5 shadow-[0_0_10px_#f2ca50]" style="font-variation-settings:'FILL' 1;">brightness_2</span>
+        </div>
+      </div>
+    </div>
+    <div class="w-full max-w-4xl luxury-border rounded-xl glow-gold overflow-hidden group">
+      <div class="glass-card p-12 md:p-20 flex flex-col items-center text-center relative overflow-hidden">
+        <div class="absolute top-10 left-10 opacity-20 group-hover:opacity-40 transition-opacity">
+          <span class="material-symbols-outlined text-primary scale-75">flare</span>
+        </div>
+        <div class="absolute bottom-10 right-10 opacity-20 group-hover:opacity-40 transition-opacity">
+          <span class="material-symbols-outlined text-primary scale-75">flare</span>
+        </div>
+        <div class="mb-10 inline-flex items-center justify-center">
+          <div id="question-number" class="w-16 h-16 rounded-full border-2 border-primary/40 bg-primary/5 flex items-center justify-center text-primary font-headline font-black text-2xl shadow-[inset_0_0_15px_rgba(242,202,80,0.1)]">01</div>
+        </div>
+        <h2 id="question-text" class="font-headline text-3xl md:text-4xl text-white font-black leading-tight mb-16 tracking-tight drop-shadow-sm max-w-3xl">Carregando...</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-16">
+          <button id="btn-A" onclick="selectAnswer('A')" class="answer-btn group/btn relative overflow-hidden glass-card luxury-border p-6 flex items-center gap-6 text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(242,202,80,0.2)]">
+            <span class="letter-badge flex-shrink-0 w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-headline font-black text-primary text-xl transition-all">A</span>
+            <span id="opt-a-text" class="text-white/80 font-body font-bold text-lg group-hover/btn:text-white transition-colors text-left"></span>
+          </button>
+          <button id="btn-B" onclick="selectAnswer('B')" class="answer-btn group/btn relative overflow-hidden glass-card luxury-border p-6 flex items-center gap-6 text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(242,202,80,0.2)]">
+            <span class="letter-badge flex-shrink-0 w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-headline font-black text-primary text-xl transition-all">B</span>
+            <span id="opt-b-text" class="text-white/80 font-body font-bold text-lg group-hover/btn:text-white transition-colors text-left"></span>
+          </button>
+          <button id="btn-C" onclick="selectAnswer('C')" class="answer-btn group/btn relative overflow-hidden glass-card luxury-border p-6 flex items-center gap-6 text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(242,202,80,0.2)]">
+            <span class="letter-badge flex-shrink-0 w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-headline font-black text-primary text-xl transition-all">C</span>
+            <span id="opt-c-text" class="text-white/80 font-body font-bold text-lg group-hover/btn:text-white transition-colors text-left"></span>
+          </button>
+          <button id="btn-D" onclick="selectAnswer('D')" class="answer-btn group/btn relative overflow-hidden glass-card luxury-border p-6 flex items-center gap-6 text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(242,202,80,0.2)]">
+            <span class="letter-badge flex-shrink-0 w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-headline font-black text-primary text-xl transition-all">D</span>
+            <span id="opt-d-text" class="text-white/80 font-body font-bold text-lg group-hover/btn:text-white transition-colors text-left"></span>
+          </button>
+        </div>
+        <div class="flex flex-col items-center gap-6">
+          <button id="next-btn" onclick="nextQuestion()" class="bg-primary hover:bg-[#ffe088] text-black font-label font-black tracking-[0.2em] uppercase py-5 px-16 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-[0_10px_40px_rgba(242,202,80,0.3)] hover:shadow-[0_15px_50px_rgba(242,202,80,0.5)]">Próxima Pergunta</button>
+          <div id="warning-msg" class="flex items-center gap-2 opacity-0 transition-opacity text-amber-400">
+            <span class="material-symbols-outlined text-[14px]">warning</span>
+            <p class="font-body text-[11px] tracking-[0.1em] uppercase font-bold">Selecione uma resposta para continuar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fixed -bottom-40 left-1/2 -translate-x-1/2 w-[140%] h-[600px] bg-primary/5 blur-[150px] rounded-[100%] pointer-events-none -z-10"></div>
+</main>
+<div id="result-screen" class="hidden flex-grow flex flex-col items-center justify-center px-4 py-16 relative z-10 stage-lights">
+  <div class="w-full max-w-2xl luxury-border rounded-xl glow-gold overflow-hidden">
+    <div class="glass-card p-12 flex flex-col items-center text-center gap-8">
+      <span class="material-symbols-outlined text-primary text-6xl" style="font-variation-settings:'FILL' 1;">emoji_events</span>
+      <h2 class="font-headline text-4xl text-white font-black tracking-tight">Quiz Concluído!</h2>
+      <div class="flex items-end gap-3">
+        <span id="result-score" class="font-headline text-7xl font-black text-primary">0</span>
+        <span id="result-total" class="font-headline text-3xl text-white/40 mb-2">/ 10</span>
+      </div>
+      <div id="result-pct" class="font-label text-2xl text-primary/70 font-bold tracking-widest">0%</div>
+      <p id="result-message" class="font-body text-on-surface-variant text-lg italic max-w-md"></p>
+      <div class="w-full border-t border-white/10 pt-8 space-y-4">
+        <p class="font-label text-xs text-on-surface-variant tracking-widest uppercase">Salve seu resultado no ranking</p>
+        <input id="result-nome" type="text" placeholder="Seu nome" class="w-full bg-surface-container-lowest border border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-on-surface-variant/40 transition-all px-4 py-3 font-body"/>
+        <input id="result-email" type="email" placeholder="Seu e-mail" class="w-full bg-surface-container-lowest border border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-on-surface-variant/40 transition-all px-4 py-3 font-body"/>
+        <button id="submit-result-btn" onclick="submitResult()" class="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold tracking-widest uppercase text-sm rounded-sm transition-all hover:opacity-90 active:scale-95">Salvar no Ranking</button>
+      </div>
+      <div class="flex gap-4 flex-wrap justify-center">
+        <button onclick="restartQuiz()" class="px-8 py-3 border border-primary/40 text-primary font-bold tracking-widest uppercase text-xs hover:bg-primary hover:text-on-primary transition-all">Jogar Novamente</button>
+        <a href="index.html" class="px-8 py-3 border border-white/20 text-white/60 font-bold tracking-widest uppercase text-xs hover:border-white/40 hover:text-white transition-all">Voltar ao Início</a>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="bg-background w-full py-12 border-t border-white/5 relative z-10">
+  <div class="flex flex-col items-center gap-6 px-10">
+    <div class="text-xl font-black text-primary/80 font-headline tracking-tighter">GOLDEN SHOPPING CALHAU</div>
+    <div class="flex flex-wrap justify-center gap-10 font-label text-[10px] tracking-[0.2em] uppercase text-white/40">
+      <a class="hover:text-primary transition-colors" href="#">Política de Privacidade</a>
+      <a class="hover:text-primary transition-colors" href="#">Informações</a>
+      <a class="hover:text-primary transition-colors" href="#">Termos de Uso</a>
+    </div>
+    <div class="text-white/20 font-label text-[9px] tracking-[0.4em] mt-4 uppercase">© 2026 Golden Shopping Calhau | Competição de Performance</div>
+  </div>
+</footer>
+<script src="js/quiz.js"></script>
+</body>
+</html>

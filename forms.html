@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inscrição — Golden Shopping Calhau</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "inverse-primary": "#735c00", "background": "#131313", "surface-tint": "#e9c349",
+        "on-secondary-fixed-variant": "#464747", "on-primary-fixed-variant": "#574500",
+        "surface-dim": "#131313", "secondary": "#c6c6c6", "on-tertiary-container": "#4e4432",
+        "tertiary-container": "#bfb19a", "inverse-surface": "#e5e2e1",
+        "secondary-fixed-dim": "#c6c6c6", "surface-container-high": "#2a2a2a",
+        "on-secondary": "#2f3131", "on-error": "#690005", "on-error-container": "#ffdad6",
+        "surface-bright": "#3a3939", "outline-variant": "#4d4635",
+        "on-secondary-container": "#b8b8b8", "on-tertiary-fixed-variant": "#4f4533",
+        "secondary-fixed": "#e3e2e2", "surface-variant": "#353534", "primary-fixed": "#ffe088",
+        "outline": "#99907c", "error-container": "#93000a", "on-primary": "#3c2f00",
+        "tertiary": "#dbccb4", "on-tertiary": "#382f1e", "on-surface": "#e5e2e1",
+        "surface-container-lowest": "#0e0e0e", "surface": "#131313", "tertiary-fixed": "#f0e0c8",
+        "on-surface-variant": "#d0c5af", "on-tertiary-fixed": "#221b0b",
+        "surface-container-highest": "#353534", "on-background": "#e5e2e1",
+        "on-primary-container": "#554300", "inverse-on-surface": "#313030",
+        "surface-container": "#201f1f", "tertiary-fixed-dim": "#d3c5ad",
+        "primary-container": "#d4af37", "on-primary-fixed": "#241a00",
+        "secondary-container": "#484949", "primary": "#f2ca50", "error": "#ffb4ab",
+        "primary-fixed-dim": "#e9c349", "surface-container-low": "#1c1b1b",
+        "on-secondary-fixed": "#1a1c1c"
+      },
+      borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+      fontFamily: { "headline": ["Noto Serif"], "body": ["Manrope"], "label": ["Manrope"] }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="css/forms.css"/>
+</head>
+<body class="bg-background text-on-background selection:bg-primary/30 min-h-screen flex flex-col">
+<nav class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-primary/10">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-14">
+    <span class="font-headline font-bold text-primary text-sm tracking-widest uppercase hidden sm:block">Golden Shopping Calhau</span>
+    <div class="flex items-center w-full sm:w-auto justify-around sm:justify-end">
+      <a href="index.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Início</a>
+      <a href="forms.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-primary border-b-2 border-primary">Inscrição</a>
+      <a href="quiz.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Quiz</a>
+      <a href="votacao.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Votação</a>
+    </div>
+  </div>
+</nav>
+<main class="flex-grow relative overflow-hidden pt-14">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-primary/5 rounded-full blur-[100px]"></div>
+<div class="absolute inset-0 pointer-events-none opacity-20">
+<div class="star-particle top-20 left-[15%]"></div>
+<div class="star-particle top-60 left-[45%]"></div>
+<div class="star-particle top-40 right-[10%]"></div>
+<div class="star-particle bottom-20 left-[20%]"></div>
+<div class="star-particle bottom-80 right-[35%]"></div>
+</div>
+<section class="max-w-6xl mx-auto px-6 py-16 relative z-10">
+<div class="mb-16 text-center md:text-left">
+<h1 class="font-headline text-5xl md:text-7xl font-black text-primary tracking-tight leading-tight mb-4 drop-shadow-sm">Inscrição para Performance:<br/>Mostre seu Talento</h1>
+<p class="font-body text-on-surface-variant text-lg max-w-2xl">Prepare-se para o holofote. Junte-se à elite dos performers no Golden Shopping Calhau. Cada detalhe da sua inscrição é o primeiro passo para sua consagração.</p>
+</div>
+<form id="inscricao-form" onsubmit="submitInscricao(event)" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="lg:col-span-7 space-y-8">
+<div class="bg-surface-container-low p-8 rounded-lg border-t-2 border-primary/20 shadow-xl">
+<h2 class="font-headline text-2xl text-tertiary mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">person</span>Identidade do Artista
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-headline text-sm text-on-surface-variant ml-1">Nome completo</label>
+<input id="f-nome-completo" class="w-full bg-surface-container-lowest border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-on-surface-variant/40 transition-all px-4 py-3" placeholder="Como no documento" type="text" required/>
+</div>
+<div class="space-y-2">
+<label class="font-headline text-sm text-on-surface-variant ml-1">Nome artístico</label>
+<input id="f-nome-artistico" class="w-full bg-surface-container-lowest border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-on-surface-variant/40 transition-all px-4 py-3" placeholder="Sua marca no palco" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-headline text-sm text-on-surface-variant ml-1">Idade</label>
+<input id="f-idade" class="w-full bg-surface-container-lowest border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-on-surface-variant/40 transition-all px-4 py-3" placeholder="Ex: 24" type="number" min="1" max="120"/>
+</div>
+<div class="space-y-2">
+<label class="font-headline text-sm text-on-surface-variant ml-1">Cidade</label>
+<input id="f-cidade" class="w-full bg-surface-container-lowest border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-on-surface-variant/40 transition-all px-4 py-3" placeholder="Onde você brilha" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-headline text-sm text-on-surface-variant ml-1">WhatsApp</label>
+<input id="f-whatsapp" class="w-full bg-surface-container-lowest border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-on-surface-variant/40 transition-all px-4 py-3" placeholder="(00) 00000-0000" type="tel"/>
+</div>
+<div class="space-y-2">
+<label class="font-headline text-sm text-on-surface-variant ml-1">E-mail</label>
+<input id="f-email" class="w-full bg-surface-container-lowest border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-on-surface-variant/40 transition-all px-4 py-3" placeholder="contato@artista.com" type="email" required/>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg border-t-2 border-primary/20 shadow-xl">
+<h2 class="font-headline text-2xl text-tertiary mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">history_edu</span>Trajetória e Experiência
+</h2>
+<div class="space-y-2">
+<label class="font-headline text-sm text-on-surface-variant ml-1">Experiência anterior</label>
+<textarea id="f-experiencia" class="w-full bg-surface-container-lowest border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-on-surface-variant/40 transition-all px-4 py-3" placeholder="Conte-nos sobre suas apresentações passadas, prêmios ou formação..." rows="5"></textarea>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 space-y-8">
+<div class="bg-surface-container-high p-8 rounded-lg border-t-2 border-primary shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rotate-45 translate-x-16 -translate-y-16 pointer-events-none"></div>
+<h2 class="font-headline text-2xl text-primary mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined">theater_comedy</span>A Performance
+</h2>
+<div class="space-y-6">
+<div class="space-y-3">
+<label class="font-headline text-sm text-on-surface-variant ml-1">Tipo de performance</label>
+<div class="grid grid-cols-3 gap-3">
+<label class="cursor-pointer group">
+<input class="hidden peer" name="perf_type" type="radio"/>
+<div class="text-center py-3 bg-surface-container-lowest border border-outline-variant/30 peer-checked:border-primary peer-checked:bg-primary/10 transition-all rounded-sm text-xs font-bold tracking-widest uppercase">Canto</div>
+</label>
+<label class="cursor-pointer group">
+<input class="hidden peer" name="perf_type" type="radio"/>
+<div class="text-center py-3 bg-surface-container-lowest border border-outline-variant/30 peer-checked:border-primary peer-checked:bg-primary/10 transition-all rounded-sm text-xs font-bold tracking-widest uppercase">Dança</div>
+</label>
+<label class="cursor-pointer group">
+<input class="hidden peer" name="perf_type" type="radio"/>
+<div class="text-center py-3 bg-surface-container-lowest border border-outline-variant/30 peer-checked:border-primary peer-checked:bg-primary/10 transition-all rounded-sm text-xs font-bold tracking-widest uppercase">Ambos</div>
+</label>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-headline text-sm text-on-surface-variant ml-1">Música escolhida</label>
+<input id="f-musica" class="w-full bg-surface-container-lowest border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-on-surface-variant/40 transition-all px-4 py-3" placeholder="Título e Artista" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-headline text-sm text-on-surface-variant ml-1">Duração da apresentação</label>
+<select id="f-duracao" class="w-full bg-surface-container-lowest border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface transition-all px-4 py-3 appearance-none">
+<option>Até 3 minutos</option>
+<option>3 a 5 minutos</option>
+<option>Mais de 5 minutos</option>
+</select>
+</div>
+</div>
+<div class="mt-10 pt-10 border-t border-outline-variant/20 space-y-6">
+<label class="flex items-start gap-3 cursor-pointer group">
+<input id="f-termos" class="mt-1 rounded-sm bg-surface-container-lowest border-outline-variant text-primary focus:ring-primary transition-all" type="checkbox"/>
+<span class="text-xs text-on-surface-variant leading-relaxed">Li e aceito os <span class="text-primary underline decoration-primary/30">termos e condições</span> de participação, autorizando o uso de minha imagem e voz para fins promocionais do evento.</span>
+</label>
+<button id="submit-btn" class="w-full py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-sm tracking-[0.2em] uppercase rounded-sm gold-glow transition-all duration-300 transform active:scale-95 shadow-lg flex items-center justify-center gap-3" type="submit">
+Enviar Minha Inscrição
+<span class="material-symbols-outlined">auto_awesome</span>
+</button>
+<div id="form-success" class="hidden mt-4 p-4 bg-green-900/30 border border-green-500/30 rounded text-green-400 text-sm text-center">
+  🎤 Inscrição enviada com sucesso! Nossa equipe entrará em contato em até 72 horas via WhatsApp.
+</div>
+<div id="form-error" class="hidden mt-4 p-4 bg-red-900/30 border border-red-500/30 rounded text-red-400 text-sm text-center">
+  Erro ao enviar. Verifique sua conexão e tente novamente.
+</div>
+</div>
+</div>
+<div class="bg-primary/5 p-6 border-l-4 border-primary rounded-sm">
+<p class="font-headline text-sm text-primary mb-2">Próximos Passos</p>
+<p class="text-xs text-on-surface-variant">Após o envio, nossa equipe técnica analisará seu material em até 72 horas. Você receberá a confirmação da audição via WhatsApp.</p>
+</div>
+</div>
+</form>
+</section>
+</main>
+<footer class="bg-[#131313] w-full py-12 border-t-[0.5px] border-[#f2ca50]/15">
+<div class="flex flex-col items-center gap-6 px-10">
+<div class="text-lg font-bold text-[#dbccb4] font-headline">GOLDEN SHOPPING CALHAU</div>
+<div class="flex gap-8">
+<a class="text-[#c6c6c6] hover:text-[#f2ca50] transition-colors font-['Manrope'] text-xs tracking-widest uppercase" href="#">Política de Privacidade</a>
+<a class="text-[#c6c6c6] hover:text-[#f2ca50] transition-colors font-['Manrope'] text-xs tracking-widest uppercase" href="#">Informações</a>
+<a class="text-[#c6c6c6] hover:text-[#f2ca50] transition-colors font-['Manrope'] text-xs tracking-widest uppercase" href="#">Termos de Uso</a>
+</div>
+<p class="text-[#f2ca50] font-['Manrope'] text-[10px] tracking-widest uppercase">© 2026 Golden Shopping Calhau | Competição de Performance</p>
+</div>
+</footer>
+<script src="js/forms.js"></script>
+</body>
+</html>

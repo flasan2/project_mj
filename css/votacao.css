@@ -1,0 +1,56 @@
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.glass-nav {
+    background: rgba(19, 19, 19, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+.gold-glow {
+    box-shadow: 0 0 30px rgba(242, 202, 80, 0.4);
+}
+.spotlight-bg {
+    background: radial-gradient(circle at 50% -20%, rgba(242, 202, 80, 0.15) 0%, rgba(19, 19, 19, 0) 70%);
+}
+.candidate-card {
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
+}
+.candidate-card:hover:not(.card-selected) {
+    transform: translateY(-8px);
+}
+.candidate-card.card-selected {
+    border-top-color: #f2ca50;
+    box-shadow: 0 0 35px rgba(242,202,80,0.45), 0 20px 50px rgba(0,0,0,0.5);
+    transform: translateY(-16px) scale(1.04);
+    z-index: 10;
+}
+.candidate-card.card-selected .card-badge {
+    background: #f2ca50;
+    color: #3c2f00;
+    border-color: #f2ca50;
+}
+.candidate-card.card-selected .card-body {
+    background: linear-gradient(135deg, #f2ca50 0%, #e9b800 100%);
+}
+.candidate-card.card-selected .card-title {
+    color: #000;
+}
+.candidate-card.card-selected .card-specialty {
+    color: #5a4200;
+}
+.candidate-card.card-selected .card-quote {
+    color: #3c2f00;
+}
+.candidate-card.card-selected .vote-btn {
+    background: #000;
+    color: #f2ca50;
+    border-color: transparent;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+.candidate-card.card-selected .card-accent {
+    display: block;
+}
+.card-accent {
+    display: none;
+}
