@@ -44,17 +44,17 @@ tailwind.config = {
 </head>
 <body class="bg-background text-on-background selection:bg-primary/30 min-h-screen flex flex-col">
 <nav class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-primary/10">
-  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-14">
-    <span class="font-headline font-bold text-primary text-sm tracking-widest uppercase hidden sm:block">Golden Shopping Calhau</span>
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+    <img src="MJ/LOGO2 .png" alt="Logo" class="h-20 w-auto hidden sm:block"/>
     <div class="flex items-center w-full sm:w-auto justify-around sm:justify-end">
-      <a href="index.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Início</a>
-      <a href="forms.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-primary border-b-2 border-primary">Inscrição</a>
-      <a href="quiz.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Quiz</a>
-      <a href="votacao.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Votação</a>
+      <a href="index.html" class="px-5 h-20 flex items-center text-sm font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Início</a>
+      <a href="forms.html" class="px-5 h-20 flex items-center text-sm font-bold tracking-widest uppercase text-primary border-b-2 border-primary">Inscrição</a>
+      <a href="quiz.html" class="px-5 h-20 flex items-center text-sm font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Quiz</a>
+      <a href="votacao.html" class="hidden">Votação</a>
     </div>
   </div>
 </nav>
-<main class="flex-grow relative overflow-hidden pt-14">
+<main class="flex-grow relative overflow-hidden pt-20">
 <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px]"></div>
 <div class="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-primary/5 rounded-full blur-[100px]"></div>
 <div class="absolute inset-0 pointer-events-none opacity-20">
@@ -102,15 +102,6 @@ tailwind.config = {
 </div>
 </div>
 </div>
-<div class="bg-surface-container-low p-8 rounded-lg border-t-2 border-primary/20 shadow-xl">
-<h2 class="font-headline text-2xl text-tertiary mb-8 flex items-center gap-3">
-<span class="material-symbols-outlined text-primary">history_edu</span>Trajetória e Experiência
-</h2>
-<div class="space-y-2">
-<label class="font-headline text-sm text-on-surface-variant ml-1">Experiência anterior</label>
-<textarea id="f-experiencia" class="w-full bg-surface-container-lowest border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-on-surface-variant/40 transition-all px-4 py-3" placeholder="Conte-nos sobre suas apresentações passadas, prêmios ou formação..." rows="5"></textarea>
-</div>
-</div>
 </div>
 <div class="lg:col-span-5 space-y-8">
 <div class="bg-surface-container-high p-8 rounded-lg border-t-2 border-primary shadow-2xl relative overflow-hidden">
@@ -137,12 +128,14 @@ tailwind.config = {
 </div>
 </div>
 <div class="space-y-2">
-<label class="font-headline text-sm text-on-surface-variant ml-1">Música escolhida</label>
+<label class="font-headline text-sm text-on-surface-variant ml-1">Sugestão de Música</label>
 <input id="f-musica" class="w-full bg-surface-container-lowest border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-on-surface-variant/40 transition-all px-4 py-3" placeholder="Título e Artista" type="text"/>
 </div>
 <div class="space-y-2">
 <label class="font-headline text-sm text-on-surface-variant ml-1">Duração da apresentação</label>
 <select id="f-duracao" class="w-full bg-surface-container-lowest border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface transition-all px-4 py-3 appearance-none">
+<option>Até 1 minuto</option>
+<option>Até 1 minuto e meio</option>
 <option>Até 3 minutos</option>
 <option>3 a 5 minutos</option>
 <option>Mais de 5 minutos</option>
@@ -152,7 +145,7 @@ tailwind.config = {
 <div class="mt-10 pt-10 border-t border-outline-variant/20 space-y-6">
 <label class="flex items-start gap-3 cursor-pointer group">
 <input id="f-termos" class="mt-1 rounded-sm bg-surface-container-lowest border-outline-variant text-primary focus:ring-primary transition-all" type="checkbox"/>
-<span class="text-xs text-on-surface-variant leading-relaxed">Li e aceito os <span class="text-primary underline decoration-primary/30">termos e condições</span> de participação, autorizando o uso de minha imagem e voz para fins promocionais do evento.</span>
+<span class="text-xs text-on-surface-variant leading-relaxed">Li e aceito os <a href="MJ/regulamento_michael_jackson.html" target="_blank" class="text-primary underline decoration-primary/30 hover:opacity-80">termos e condições</a> de participação, autorizando o uso de minha imagem e voz para fins promocionais do evento.</span>
 </label>
 <button id="submit-btn" class="w-full py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold text-sm tracking-[0.2em] uppercase rounded-sm gold-glow transition-all duration-300 transform active:scale-95 shadow-lg flex items-center justify-center gap-3" type="submit">
 Enviar Minha Inscrição
@@ -178,13 +171,52 @@ Enviar Minha Inscrição
 <div class="flex flex-col items-center gap-6 px-10">
 <div class="text-lg font-bold text-[#dbccb4] font-headline">GOLDEN SHOPPING CALHAU</div>
 <div class="flex gap-8">
-<a class="text-[#c6c6c6] hover:text-[#f2ca50] transition-colors font-['Manrope'] text-xs tracking-widest uppercase" href="#">Política de Privacidade</a>
-<a class="text-[#c6c6c6] hover:text-[#f2ca50] transition-colors font-['Manrope'] text-xs tracking-widest uppercase" href="#">Informações</a>
-<a class="text-[#c6c6c6] hover:text-[#f2ca50] transition-colors font-['Manrope'] text-xs tracking-widest uppercase" href="#">Termos de Uso</a>
+<button onclick="openInfoModal('privacidade')" class="text-[#c6c6c6] hover:text-[#f2ca50] transition-colors font-['Manrope'] text-xs tracking-widest uppercase bg-transparent border-none cursor-pointer">Política de Privacidade</button>
+<button onclick="openInfoModal('informacoes')" class="text-[#c6c6c6] hover:text-[#f2ca50] transition-colors font-['Manrope'] text-xs tracking-widest uppercase bg-transparent border-none cursor-pointer">Informações</button>
+<button onclick="openInfoModal('termos')" class="text-[#c6c6c6] hover:text-[#f2ca50] transition-colors font-['Manrope'] text-xs tracking-widest uppercase bg-transparent border-none cursor-pointer">Termos de Uso</button>
 </div>
 <p class="text-[#f2ca50] font-['Manrope'] text-[10px] tracking-widest uppercase">© 2026 Golden Shopping Calhau | Competição de Performance</p>
 </div>
 </footer>
 <script src="js/forms.js"></script>
+<div id="info-modal" class="fixed inset-0 z-[200] hidden items-center justify-center px-4" style="background:rgba(0,0,0,0.75);backdrop-filter:blur(8px)">
+  <div class="w-full max-w-lg bg-[#1c1b1b] border border-[#f2ca50]/20 rounded-xl p-8 flex flex-col gap-6 shadow-[0_0_50px_rgba(242,202,80,0.12)] max-h-[80vh] overflow-y-auto">
+    <div class="flex justify-between items-start">
+      <h3 id="info-modal-title" class="font-headline text-xl text-primary font-bold"></h3>
+      <button onclick="closeInfoModal()" class="text-[#d0c5af] hover:text-[#e5e2e1] transition-colors ml-4 flex-shrink-0">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div id="info-modal-body" class="font-body text-[#d0c5af] text-sm leading-relaxed space-y-4"></div>
+  </div>
+</div>
+<script>
+const INFO_CONTENT = {
+  privacidade: {
+    title: 'Política de Privacidade',
+    body: `<p>O Golden Shopping Calhau valoriza a privacidade dos seus participantes e visitantes. Esta política descreve como coletamos, utilizamos e protegemos suas informações pessoais.</p><p><strong class="text-[#f2ca50]">Dados coletados:</strong> Nome completo, nome artístico, idade, cidade, número de WhatsApp e endereço de e-mail, fornecidos voluntariamente no formulário de inscrição ou no cadastro de votação.</p><p><strong class="text-[#f2ca50]">Finalidade:</strong> As informações são utilizadas exclusivamente para fins de gestão do evento — contato para confirmação de audição, divulgação de resultados e comunicados oficiais do Golden Shopping Calhau.</p><p><strong class="text-[#f2ca50]">Compartilhamento:</strong> Seus dados não serão vendidos, cedidos ou compartilhados com terceiros fora do contexto do evento, salvo por obrigação legal.</p><p><strong class="text-[#f2ca50]">Seus direitos (LGPD):</strong> Você pode solicitar acesso, correção ou exclusão dos seus dados a qualquer momento pelo e-mail do evento. Em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p><p><strong class="text-[#f2ca50]">Retenção:</strong> Os dados são mantidos pelo período necessário à realização do evento e por até 12 meses após seu encerramento.</p>`
+  },
+  informacoes: {
+    title: 'Informações do Evento',
+    body: `<p><strong class="text-[#f2ca50]">Evento:</strong> O Legado do Rei — Competição de Performance Michael Jackson</p><p><strong class="text-[#f2ca50]">Local:</strong> Golden Shopping Calhau — São Luís, Maranhão</p><p><strong class="text-[#f2ca50]">Acesso:</strong> Entrada gratuita ao público para assistir às performances no palco principal.</p><p><strong class="text-[#f2ca50]">Inscrições:</strong> Abertas para performers de qualquer idade. Preencha o formulário de inscrição disponível neste site. Nossa equipe entrará em contato em até 72 horas via WhatsApp.</p><p><strong class="text-[#f2ca50]">Quiz:</strong> Desafio de conhecimentos sobre Michael Jackson, aberto a todos os visitantes. Resultados publicados no ranking do evento.</p><p><strong class="text-[#f2ca50]">Votação Popular:</strong> O público escolhe a melhor performance através do sistema de votação disponível neste site. Cada e-mail pode registrar um único voto.</p><p><strong class="text-[#f2ca50]">Contato:</strong> Para dúvidas e informações adicionais, entre em contato com a equipe do Golden Shopping Calhau pelos canais oficiais do shopping.</p>`
+  },
+  termos: {
+    title: 'Termos de Uso',
+    body: `<p>Ao utilizar este site e participar do evento Golden Shopping Calhau, você concorda com os seguintes termos:</p><p><strong class="text-[#f2ca50]">Uso do site:</strong> Este site destina-se exclusivamente à divulgação e gestão do evento. É vedado qualquer uso indevido, tentativa de manipulação de votos ou envio de informações falsas.</p><p><strong class="text-[#f2ca50]">Inscrições:</strong> Ao se inscrever, o participante autoriza o uso de sua imagem e voz para fins promocionais do evento Golden Shopping Calhau, sem ônus. A inscrição não garante participação, ficando sujeita à análise e confirmação pela equipe técnica.</p><p><strong class="text-[#f2ca50]">Votação:</strong> O sistema de votação admite um voto por endereço de e-mail. Votos duplicados ou fraudulentos serão cancelados. A organização reserva-se o direito de invalidar votos em caso de irregularidade.</p><p><strong class="text-[#f2ca50]">Propriedade intelectual:</strong> Todo o conteúdo deste site — textos, imagens e design — é de propriedade do Golden Shopping Calhau. A reprodução sem autorização é proibida.</p><p><strong class="text-[#f2ca50]">Foro:</strong> Fica eleito o foro da Comarca de São Luís/MA para dirimir quaisquer controvérsias decorrentes destes termos.</p>`
+  }
+};
+function openInfoModal(type) {
+  const modal = document.getElementById('info-modal');
+  document.getElementById('info-modal-title').textContent = INFO_CONTENT[type].title;
+  document.getElementById('info-modal-body').innerHTML = INFO_CONTENT[type].body;
+  modal.style.display = 'flex';
+}
+function closeInfoModal() {
+  document.getElementById('info-modal').style.display = 'none';
+}
+document.getElementById('info-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeInfoModal();
+});
+</script>
 </body>
 </html>

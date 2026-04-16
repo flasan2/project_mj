@@ -71,7 +71,7 @@ function setupVotacaoSheet(ss) {
   if (!sheet) sheet = ss.insertSheet('Votação');
   else sheet.clearContents();
 
-  const headers = [['Timestamp', 'Nome do Votante', 'Email do Votante', 'Candidato Votado', 'Número do Candidato']];
+  const headers = [['Timestamp', 'Nome', 'Email do Votante', 'Candidato Votado', 'Número do Candidato']];
   sheet.getRange(1, 1, 1, 5).setValues(headers)
     .setFontWeight('bold').setBackground('#d4af37').setFontColor('#000000');
   sheet.autoResizeColumns(1, 5);
@@ -112,6 +112,24 @@ function doGet(e) {
       }
     }
     result = { success: true, data: questions };
+
+  } else if (e.parameter.action === 'getCandidates') {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const sheet = ss.getSheetByName('candidatos');
+    if (!sheet) {
+      result = { success: false, error: 'Aba candidatos não encontrada' };
+    } else {
+      const rows = sheet.getDataRange().getValues();
+      const candidates = [];
+      for (let i = 1; i < rows.length; i++) {
+        const r = rows[i];
+        if (r[0] || r[1]) {
+          candidates.push({ id: r[0], candidato: r[1] });
+        }
+      }
+      result = { success: true, data: candidates };
+    }
+
   } else {
     result = { error: 'Ação não reconhecida' };
   }

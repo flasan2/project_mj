@@ -45,18 +45,13 @@ tailwind.config = {
 <body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary">
 <nav class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-primary/10">
   <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-14">
-    <span class="font-headline font-bold text-primary text-sm tracking-widest uppercase hidden sm:block">Golden Shopping Calhau</span>
+    <img src="MJ/LOGO2 .png" alt="Logo" class="h-16 w-auto hidden sm:block"/>
     <div class="flex items-center w-full sm:w-auto justify-around sm:justify-end">
-      <a href="index.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Início</a>
-      <a href="forms.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Inscrição</a>
-      <a href="quiz.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Quiz</a>
-      <a href="votacao.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-primary border-b-2 border-primary">Votação</a>
     </div>
   </div>
 </nav>
 <main class="min-h-screen spotlight-bg pt-20 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
 <header class="text-center mb-16 space-y-4">
-<span class="text-primary font-label tracking-[0.3em] uppercase text-xs font-bold">Golden Shopping Calhau Apresenta</span>
 <h1 class="text-5xl md:text-7xl font-black font-headline text-on-surface tracking-tight leading-none">
 Votação Popular: <br/>
 <span class="text-primary drop-shadow-[0_2px_10px_rgba(242,202,80,0.3)]">Escolha a Melhor Performance</span>
@@ -69,63 +64,79 @@ Votação Popular: <br/>
 <input class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg py-4 pl-12 pr-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-label" placeholder="Buscar por nome ou número..." type="text"/>
 </div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-start">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 items-start">
 <article onclick="selectCard(this)" class="candidate-card group relative flex flex-col bg-surface-container-low border-t-2 border-primary/20 rounded-lg overflow-hidden">
 <div class="card-accent absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-primary z-10"></div>
-<div class="aspect-[3/4] overflow-hidden relative">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1606030495863-d2e108e49328?q=80&w=874&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Candidata Larrissa Almeida"/>
+<div class="aspect-square overflow-hidden relative bg-surface-container flex items-center justify-center">
+<img class="w-3/4 h-3/4 object-contain transition-transform duration-700 group-hover:scale-110 opacity-80" src="MJ/icon-mj.png" alt="Candidato 1"/>
 <div class="card-badge absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 rounded-full border border-primary/30 transition-all duration-300">
 <span class="font-bold font-label text-primary">#01</span>
 </div>
 </div>
-<div class="card-body p-8 flex flex-col flex-grow transition-all duration-300">
-<h3 class="card-title text-2xl font-headline font-bold text-on-surface mb-1 uppercase tracking-tight transition-colors duration-300">Larrissa Almeida</h3>
-<p class="card-specialty text-tertiary font-label text-xs tracking-widest uppercase mb-4 transition-colors duration-300">Bad Specialist</p>
-<p class="card-quote text-on-surface-variant text-sm leading-relaxed mb-8 font-light italic transition-colors duration-300">"Domínio absoluto do Moonwalk lateral e expressão vocal idêntica à turnê de 1988."</p>
-<button onclick="event.stopPropagation(); openVoteModal('Larrissa Almeida', '#01')" class="vote-btn mt-auto w-full py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
+<div class="card-body p-6 flex flex-col flex-grow transition-all duration-300">
+<h3 class="card-title text-xl font-headline font-bold text-on-surface mb-6 uppercase tracking-tight transition-colors duration-300">Candidato 1</h3>
+<button onclick="event.stopPropagation(); openVoteModal('Candidato 1', '#01')" class="vote-btn mt-auto w-full py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
 </div>
 </article>
 <article onclick="selectCard(this)" class="candidate-card group relative flex flex-col bg-surface-container-low border-t-2 border-primary/20 rounded-lg overflow-hidden">
 <div class="card-accent absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-primary z-10"></div>
-<div class="aspect-[3/4] overflow-hidden relative">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1643113231904-ea2af9b4ebcb?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Candidato Leo"/>
+<div class="aspect-square overflow-hidden relative bg-surface-container flex items-center justify-center">
+<img class="w-3/4 h-3/4 object-contain transition-transform duration-700 group-hover:scale-110 opacity-80" src="MJ/icon-mj.png" alt="Candidato 2"/>
 <div class="card-badge absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 rounded-full border border-primary/30 transition-all duration-300">
 <span class="font-bold font-label text-primary">#02</span>
 </div>
 </div>
-<div class="card-body p-8 flex flex-col flex-grow transition-all duration-300">
-<h3 class="card-title text-2xl font-headline font-bold text-on-surface mb-1 uppercase tracking-tight transition-colors duration-300">Leo</h3>
-<p class="card-specialty text-tertiary font-label text-xs tracking-widest uppercase mb-4 transition-colors duration-300">The King's Presence</p>
-<p class="card-quote text-on-surface-variant text-sm leading-relaxed mb-8 font-light italic transition-colors duration-300">"Vencedor de 3 concursos internacionais, reconhecido pela fluidez dos movimentos isolados."</p>
-<button onclick="event.stopPropagation(); openVoteModal('Leo', '#02')" class="vote-btn mt-auto w-full py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
+<div class="card-body p-6 flex flex-col flex-grow transition-all duration-300">
+<h3 class="card-title text-xl font-headline font-bold text-on-surface mb-6 uppercase tracking-tight transition-colors duration-300">Candidato 2</h3>
+<button onclick="event.stopPropagation(); openVoteModal('Candidato 2', '#02')" class="vote-btn mt-auto w-full py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
 </div>
 </article>
 <article onclick="selectCard(this)" class="candidate-card group relative flex flex-col bg-surface-container-low border-t-2 border-primary/20 rounded-lg overflow-hidden">
 <div class="card-accent absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-primary z-10"></div>
-<div class="aspect-[3/4] overflow-hidden relative">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1672088405080-be3e93992a31?q=80&w=465&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Candidato Thiago Jackson"/>
+<div class="aspect-square overflow-hidden relative bg-surface-container flex items-center justify-center">
+<img class="w-3/4 h-3/4 object-contain transition-transform duration-700 group-hover:scale-110 opacity-80" src="MJ/icon-mj.png" alt="Candidato 3"/>
 <div class="card-badge absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 rounded-full border border-primary/30 transition-all duration-300">
 <span class="font-bold font-label text-primary">#03</span>
 </div>
 </div>
-<div class="card-body p-8 flex flex-col flex-grow transition-all duration-300">
-<h3 class="card-title text-2xl font-headline font-bold text-on-surface mb-1 uppercase tracking-tight transition-colors duration-300">Thiago Jackson</h3>
-<p class="card-specialty text-tertiary font-label text-xs tracking-widest uppercase mb-4 transition-colors duration-300">Thriller Specialist</p>
-<p class="card-quote text-on-surface-variant text-sm leading-relaxed mb-8 font-light italic transition-colors duration-300">"Famoso pela caracterização impecável e energia explosiva nas coreografias de grupo."</p>
-<button onclick="event.stopPropagation(); openVoteModal('Thiago Jackson', '#03')" class="vote-btn mt-auto w-full py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
+<div class="card-body p-6 flex flex-col flex-grow transition-all duration-300">
+<h3 class="card-title text-xl font-headline font-bold text-on-surface mb-6 uppercase tracking-tight transition-colors duration-300">Candidato 3</h3>
+<button onclick="event.stopPropagation(); openVoteModal('Candidato 3', '#03')" class="vote-btn mt-auto w-full py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
+</div>
+</article>
+<article onclick="selectCard(this)" class="candidate-card group relative flex flex-col bg-surface-container-low border-t-2 border-primary/20 rounded-lg overflow-hidden">
+<div class="card-accent absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-primary z-10"></div>
+<div class="aspect-square overflow-hidden relative bg-surface-container flex items-center justify-center">
+<img class="w-3/4 h-3/4 object-contain transition-transform duration-700 group-hover:scale-110 opacity-80" src="MJ/icon-mj.png" alt="Candidato 4"/>
+<div class="card-badge absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 rounded-full border border-primary/30 transition-all duration-300">
+<span class="font-bold font-label text-primary">#04</span>
+</div>
+</div>
+<div class="card-body p-6 flex flex-col flex-grow transition-all duration-300">
+<h3 class="card-title text-xl font-headline font-bold text-on-surface mb-6 uppercase tracking-tight transition-colors duration-300">Candidato 4</h3>
+<button onclick="event.stopPropagation(); openVoteModal('Candidato 4', '#04')" class="vote-btn mt-auto w-full py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
+</div>
+</article>
+<article onclick="selectCard(this)" class="candidate-card group relative flex flex-col bg-surface-container-low border-t-2 border-primary/20 rounded-lg overflow-hidden">
+<div class="card-accent absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-primary z-10"></div>
+<div class="aspect-square overflow-hidden relative bg-surface-container flex items-center justify-center">
+<img class="w-3/4 h-3/4 object-contain transition-transform duration-700 group-hover:scale-110 opacity-80" src="MJ/icon-mj.png" alt="Candidato 5"/>
+<div class="card-badge absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 rounded-full border border-primary/30 transition-all duration-300">
+<span class="font-bold font-label text-primary">#05</span>
+</div>
+</div>
+<div class="card-body p-6 flex flex-col flex-grow transition-all duration-300">
+<h3 class="card-title text-xl font-headline font-bold text-on-surface mb-6 uppercase tracking-tight transition-colors duration-300">Candidato 5</h3>
+<button onclick="event.stopPropagation(); openVoteModal('Candidato 5', '#05')" class="vote-btn mt-auto w-full py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
 </div>
 </article>
 </div>
 <div class="mt-20 flex justify-center items-center gap-6">
-<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center text-secondary hover:border-primary hover:text-primary transition-all">
+<button id="btn-prev" onclick="changePage(-1)" class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center text-secondary hover:border-primary hover:text-primary transition-all disabled:opacity-30 disabled:cursor-not-allowed">
 <span class="material-symbols-outlined">chevron_left</span>
 </button>
-<div class="flex gap-4">
-<span class="w-2 h-2 rounded-full bg-primary"></span>
-<span class="w-2 h-2 rounded-full bg-surface-container-highest"></span>
-<span class="w-2 h-2 rounded-full bg-surface-container-highest"></span>
-</div>
-<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center text-secondary hover:border-primary hover:text-primary transition-all">
+<div id="pagination-dots" class="flex gap-4"></div>
+<button id="btn-next" onclick="changePage(1)" class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center text-secondary hover:border-primary hover:text-primary transition-all disabled:opacity-30 disabled:cursor-not-allowed">
 <span class="material-symbols-outlined">chevron_right</span>
 </button>
 </div>
@@ -144,7 +155,7 @@ Votação Popular: <br/>
     <div class="space-y-4">
       <div class="space-y-1">
         <label class="font-label text-xs text-on-surface-variant tracking-widest uppercase">Seu nome</label>
-        <input id="vote-nome" type="text" placeholder="Nome completo" class="w-full bg-surface-container-lowest border border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-on-surface-variant/40 transition-all px-4 py-3 font-body" required/>
+        <input id="vote-nome" type="text" placeholder="Nome" class="w-full bg-surface-container-lowest border border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-on-surface-variant/40 transition-all px-4 py-3 font-body" required/>
       </div>
       <div class="space-y-1">
         <label class="font-label text-xs text-on-surface-variant tracking-widest uppercase">Seu e-mail</label>
@@ -157,14 +168,56 @@ Votação Popular: <br/>
   </div>
 </div>
 <footer class="bg-background w-full py-12 border-t-[0.5px] border-primary/15 flex flex-col items-center gap-6 px-10">
-<div class="text-lg font-bold text-tertiary tracking-tight font-headline">GOLDEN SHOPPING CALHAU</div>
+<img src="MJ/LOGO.png" alt="Golden Shopping Calhau" class="h-16 w-auto drop-shadow-xl opacity-90"/>
 <div class="flex gap-8">
-<a class="text-secondary hover:text-primary transition-colors font-label text-xs tracking-widest uppercase" href="#">Política de Privacidade</a>
-<a class="text-secondary hover:text-primary transition-colors font-label text-xs tracking-widest uppercase" href="#">Informações</a>
-<a class="text-secondary hover:text-primary transition-colors font-label text-xs tracking-widest uppercase" href="#">Termos de Uso</a>
+<button onclick="openInfoModal('privacidade')" class="text-secondary hover:text-primary transition-colors font-label text-xs tracking-widest uppercase bg-transparent border-none cursor-pointer">Política de Privacidade</button>
+<button onclick="openInfoModal('informacoes')" class="text-secondary hover:text-primary transition-colors font-label text-xs tracking-widest uppercase bg-transparent border-none cursor-pointer">Informações</button>
+<button onclick="openInfoModal('termos')" class="text-secondary hover:text-primary transition-colors font-label text-xs tracking-widest uppercase bg-transparent border-none cursor-pointer">Termos de Uso</button>
 </div>
 <p class="text-outline text-[10px] tracking-[0.2em] uppercase font-label">© 2026 Golden Shopping Calhau | Competição de Performance</p>
 </footer>
+<script>
+  window.APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoFkll0JRo-sXh1rA8hfUNo6CNU_Te_Bln93DueXxGrJR5LCQ7AnO1kO_PsAA2VB2Acg/exec';
+</script>
 <script src="js/votacao.js"></script>
+<div id="info-modal" class="fixed inset-0 z-[200] hidden items-center justify-center px-4" style="background:rgba(0,0,0,0.75);backdrop-filter:blur(8px)">
+  <div class="w-full max-w-lg bg-[#1c1b1b] border border-[#f2ca50]/20 rounded-xl p-8 flex flex-col gap-6 shadow-[0_0_50px_rgba(242,202,80,0.12)] max-h-[80vh] overflow-y-auto">
+    <div class="flex justify-between items-start">
+      <h3 id="info-modal-title" class="font-headline text-xl text-primary font-bold"></h3>
+      <button onclick="closeInfoModal()" class="text-[#d0c5af] hover:text-[#e5e2e1] transition-colors ml-4 flex-shrink-0">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div id="info-modal-body" class="font-body text-[#d0c5af] text-sm leading-relaxed space-y-4"></div>
+  </div>
+</div>
+<script>
+const INFO_CONTENT = {
+  privacidade: {
+    title: 'Política de Privacidade',
+    body: `<p>O Golden Shopping Calhau valoriza a privacidade dos seus participantes e visitantes. Esta política descreve como coletamos, utilizamos e protegemos suas informações pessoais.</p><p><strong class="text-[#f2ca50]">Dados coletados:</strong> Nome completo, nome artístico, idade, cidade, número de WhatsApp e endereço de e-mail, fornecidos voluntariamente no formulário de inscrição ou no cadastro de votação.</p><p><strong class="text-[#f2ca50]">Finalidade:</strong> As informações são utilizadas exclusivamente para fins de gestão do evento — contato para confirmação de audição, divulgação de resultados e comunicados oficiais do Golden Shopping Calhau.</p><p><strong class="text-[#f2ca50]">Compartilhamento:</strong> Seus dados não serão vendidos, cedidos ou compartilhados com terceiros fora do contexto do evento, salvo por obrigação legal.</p><p><strong class="text-[#f2ca50]">Seus direitos (LGPD):</strong> Você pode solicitar acesso, correção ou exclusão dos seus dados a qualquer momento pelo e-mail do evento. Em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p><p><strong class="text-[#f2ca50]">Retenção:</strong> Os dados são mantidos pelo período necessário à realização do evento e por até 12 meses após seu encerramento.</p>`
+  },
+  informacoes: {
+    title: 'Informações do Evento',
+    body: `<p><strong class="text-[#f2ca50]">Evento:</strong> O Legado do Rei — Competição de Performance Michael Jackson</p><p><strong class="text-[#f2ca50]">Local:</strong> Golden Shopping Calhau — São Luís, Maranhão</p><p><strong class="text-[#f2ca50]">Acesso:</strong> Entrada gratuita ao público para assistir às performances no palco principal.</p><p><strong class="text-[#f2ca50]">Inscrições:</strong> Abertas para performers de qualquer idade. Preencha o formulário de inscrição disponível neste site. Nossa equipe entrará em contato em até 72 horas via WhatsApp.</p><p><strong class="text-[#f2ca50]">Quiz:</strong> Desafio de conhecimentos sobre Michael Jackson, aberto a todos os visitantes. Resultados publicados no ranking do evento.</p><p><strong class="text-[#f2ca50]">Votação Popular:</strong> O público escolhe a melhor performance através do sistema de votação disponível neste site. Cada e-mail pode registrar um único voto.</p><p><strong class="text-[#f2ca50]">Contato:</strong> Para dúvidas e informações adicionais, entre em contato com a equipe do Golden Shopping Calhau pelos canais oficiais do shopping.</p>`
+  },
+  termos: {
+    title: 'Termos de Uso',
+    body: `<p>Ao utilizar este site e participar do evento Golden Shopping Calhau, você concorda com os seguintes termos:</p><p><strong class="text-[#f2ca50]">Uso do site:</strong> Este site destina-se exclusivamente à divulgação e gestão do evento. É vedado qualquer uso indevido, tentativa de manipulação de votos ou envio de informações falsas.</p><p><strong class="text-[#f2ca50]">Inscrições:</strong> Ao se inscrever, o participante autoriza o uso de sua imagem e voz para fins promocionais do evento Golden Shopping Calhau, sem ônus. A inscrição não garante participação, ficando sujeita à análise e confirmação pela equipe técnica.</p><p><strong class="text-[#f2ca50]">Votação:</strong> O sistema de votação admite um voto por endereço de e-mail. Votos duplicados ou fraudulentos serão cancelados. A organização reserva-se o direito de invalidar votos em caso de irregularidade.</p><p><strong class="text-[#f2ca50]">Propriedade intelectual:</strong> Todo o conteúdo deste site — textos, imagens e design — é de propriedade do Golden Shopping Calhau. A reprodução sem autorização é proibida.</p><p><strong class="text-[#f2ca50]">Foro:</strong> Fica eleito o foro da Comarca de São Luís/MA para dirimir quaisquer controvérsias decorrentes destes termos.</p>`
+  }
+};
+function openInfoModal(type) {
+  const modal = document.getElementById('info-modal');
+  document.getElementById('info-modal-title').textContent = INFO_CONTENT[type].title;
+  document.getElementById('info-modal-body').innerHTML = INFO_CONTENT[type].body;
+  modal.style.display = 'flex';
+}
+function closeInfoModal() {
+  document.getElementById('info-modal').style.display = 'none';
+}
+document.getElementById('info-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeInfoModal();
+});
+</script>
 </body>
 </html>

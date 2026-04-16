@@ -44,13 +44,12 @@ tailwind.config = {
 </head>
 <body class="text-on-background font-body selection:bg-primary/30 min-h-screen flex flex-col relative overflow-x-hidden quiz-bg">
 <nav class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-primary/10">
-  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-14">
-    <span class="font-headline font-bold text-primary text-sm tracking-widest uppercase hidden sm:block">Golden Shopping Calhau</span>
-    <div class="flex items-center w-full sm:w-auto justify-around sm:justify-end">
-      <a href="index.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Início</a>
-      <a href="forms.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Inscrição</a>
-      <a href="quiz.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-primary border-b-2 border-primary">Quiz</a>
-      <a href="votacao.html" class="px-4 h-14 flex items-center text-xs font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Votação</a>
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+<div class="flex items-center w-full sm:w-auto justify-around sm:justify-end">
+      <a href="index.html" class="px-5 h-20 flex items-center text-sm font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Início</a>
+      <a href="forms.html" class="px-5 h-20 flex items-center text-sm font-bold tracking-widest uppercase text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary/40">Inscrição</a>
+      <a href="quiz.html" class="px-5 h-20 flex items-center text-sm font-bold tracking-widest uppercase text-primary border-b-2 border-primary">Quiz</a>
+      <a href="votacao.html" class="hidden">Votação</a>
     </div>
   </div>
 </nav>
@@ -151,13 +150,52 @@ tailwind.config = {
   <div class="flex flex-col items-center gap-6 px-10">
     <div class="text-xl font-black text-primary/80 font-headline tracking-tighter">GOLDEN SHOPPING CALHAU</div>
     <div class="flex flex-wrap justify-center gap-10 font-label text-[10px] tracking-[0.2em] uppercase text-white/40">
-      <a class="hover:text-primary transition-colors" href="#">Política de Privacidade</a>
-      <a class="hover:text-primary transition-colors" href="#">Informações</a>
-      <a class="hover:text-primary transition-colors" href="#">Termos de Uso</a>
+      <button onclick="openInfoModal('privacidade')" class="hover:text-primary transition-colors bg-transparent border-none cursor-pointer font-label text-[10px] tracking-[0.2em] uppercase text-white/40 hover:text-primary">Política de Privacidade</button>
+      <button onclick="openInfoModal('informacoes')" class="hover:text-primary transition-colors bg-transparent border-none cursor-pointer font-label text-[10px] tracking-[0.2em] uppercase text-white/40 hover:text-primary">Informações</button>
+      <button onclick="openInfoModal('termos')" class="hover:text-primary transition-colors bg-transparent border-none cursor-pointer font-label text-[10px] tracking-[0.2em] uppercase text-white/40 hover:text-primary">Termos de Uso</button>
     </div>
     <div class="text-white/20 font-label text-[9px] tracking-[0.4em] mt-4 uppercase">© 2026 Golden Shopping Calhau | Competição de Performance</div>
   </div>
 </footer>
 <script src="js/quiz.js"></script>
+<div id="info-modal" class="fixed inset-0 z-[200] hidden items-center justify-center px-4" style="background:rgba(0,0,0,0.75);backdrop-filter:blur(8px)">
+  <div class="w-full max-w-lg bg-[#1c1b1b] border border-[#f2ca50]/20 rounded-xl p-8 flex flex-col gap-6 shadow-[0_0_50px_rgba(242,202,80,0.12)] max-h-[80vh] overflow-y-auto">
+    <div class="flex justify-between items-start">
+      <h3 id="info-modal-title" class="font-headline text-xl text-primary font-bold"></h3>
+      <button onclick="closeInfoModal()" class="text-[#d0c5af] hover:text-[#e5e2e1] transition-colors ml-4 flex-shrink-0">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div id="info-modal-body" class="font-body text-[#d0c5af] text-sm leading-relaxed space-y-4"></div>
+  </div>
+</div>
+<script>
+const INFO_CONTENT = {
+  privacidade: {
+    title: 'Política de Privacidade',
+    body: `<p>O Golden Shopping Calhau valoriza a privacidade dos seus participantes e visitantes. Esta política descreve como coletamos, utilizamos e protegemos suas informações pessoais.</p><p><strong class="text-[#f2ca50]">Dados coletados:</strong> Nome completo, nome artístico, idade, cidade, número de WhatsApp e endereço de e-mail, fornecidos voluntariamente no formulário de inscrição ou no cadastro de votação.</p><p><strong class="text-[#f2ca50]">Finalidade:</strong> As informações são utilizadas exclusivamente para fins de gestão do evento — contato para confirmação de audição, divulgação de resultados e comunicados oficiais do Golden Shopping Calhau.</p><p><strong class="text-[#f2ca50]">Compartilhamento:</strong> Seus dados não serão vendidos, cedidos ou compartilhados com terceiros fora do contexto do evento, salvo por obrigação legal.</p><p><strong class="text-[#f2ca50]">Seus direitos (LGPD):</strong> Você pode solicitar acesso, correção ou exclusão dos seus dados a qualquer momento pelo e-mail do evento. Em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p><p><strong class="text-[#f2ca50]">Retenção:</strong> Os dados são mantidos pelo período necessário à realização do evento e por até 12 meses após seu encerramento.</p>`
+  },
+  informacoes: {
+    title: 'Informações do Evento',
+    body: `<p><strong class="text-[#f2ca50]">Evento:</strong> O Legado do Rei — Competição de Performance Michael Jackson</p><p><strong class="text-[#f2ca50]">Local:</strong> Golden Shopping Calhau — São Luís, Maranhão</p><p><strong class="text-[#f2ca50]">Acesso:</strong> Entrada gratuita ao público para assistir às performances no palco principal.</p><p><strong class="text-[#f2ca50]">Inscrições:</strong> Abertas para performers de qualquer idade. Preencha o formulário de inscrição disponível neste site. Nossa equipe entrará em contato em até 72 horas via WhatsApp.</p><p><strong class="text-[#f2ca50]">Quiz:</strong> Desafio de conhecimentos sobre Michael Jackson, aberto a todos os visitantes. Resultados publicados no ranking do evento.</p><p><strong class="text-[#f2ca50]">Votação Popular:</strong> O público escolhe a melhor performance através do sistema de votação disponível neste site. Cada e-mail pode registrar um único voto.</p><p><strong class="text-[#f2ca50]">Contato:</strong> Para dúvidas e informações adicionais, entre em contato com a equipe do Golden Shopping Calhau pelos canais oficiais do shopping.</p>`
+  },
+  termos: {
+    title: 'Termos de Uso',
+    body: `<p>Ao utilizar este site e participar do evento Golden Shopping Calhau, você concorda com os seguintes termos:</p><p><strong class="text-[#f2ca50]">Uso do site:</strong> Este site destina-se exclusivamente à divulgação e gestão do evento. É vedado qualquer uso indevido, tentativa de manipulação de votos ou envio de informações falsas.</p><p><strong class="text-[#f2ca50]">Inscrições:</strong> Ao se inscrever, o participante autoriza o uso de sua imagem e voz para fins promocionais do evento Golden Shopping Calhau, sem ônus. A inscrição não garante participação, ficando sujeita à análise e confirmação pela equipe técnica.</p><p><strong class="text-[#f2ca50]">Votação:</strong> O sistema de votação admite um voto por endereço de e-mail. Votos duplicados ou fraudulentos serão cancelados. A organização reserva-se o direito de invalidar votos em caso de irregularidade.</p><p><strong class="text-[#f2ca50]">Propriedade intelectual:</strong> Todo o conteúdo deste site — textos, imagens e design — é de propriedade do Golden Shopping Calhau. A reprodução sem autorização é proibida.</p><p><strong class="text-[#f2ca50]">Foro:</strong> Fica eleito o foro da Comarca de São Luís/MA para dirimir quaisquer controvérsias decorrentes destes termos.</p>`
+  }
+};
+function openInfoModal(type) {
+  const modal = document.getElementById('info-modal');
+  document.getElementById('info-modal-title').textContent = INFO_CONTENT[type].title;
+  document.getElementById('info-modal-body').innerHTML = INFO_CONTENT[type].body;
+  modal.style.display = 'flex';
+}
+function closeInfoModal() {
+  document.getElementById('info-modal').style.display = 'none';
+}
+document.getElementById('info-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeInfoModal();
+});
+</script>
 </body>
 </html>
