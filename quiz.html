@@ -81,37 +81,37 @@ tailwind.config = {
       </div>
     </div>
     <div class="w-full max-w-4xl luxury-border rounded-xl glow-gold overflow-hidden group">
-      <div class="glass-card p-12 md:p-20 flex flex-col items-center text-center relative overflow-hidden">
+      <div class="glass-card p-4 md:p-20 flex flex-col items-center text-center relative overflow-hidden">
         <div class="absolute top-10 left-10 opacity-20 group-hover:opacity-40 transition-opacity">
           <span class="material-symbols-outlined text-primary scale-75">flare</span>
         </div>
         <div class="absolute bottom-10 right-10 opacity-20 group-hover:opacity-40 transition-opacity">
           <span class="material-symbols-outlined text-primary scale-75">flare</span>
         </div>
-        <div class="mb-10 inline-flex items-center justify-center">
-          <div id="question-number" class="w-16 h-16 rounded-full border-2 border-primary/40 bg-primary/5 flex items-center justify-center text-primary font-headline font-black text-2xl shadow-[inset_0_0_15px_rgba(242,202,80,0.1)]">01</div>
+        <div class="mb-4 md:mb-10 inline-flex items-center justify-center">
+          <div id="question-number" class="w-10 h-10 md:w-16 md:h-16 rounded-full border-2 border-primary/40 bg-primary/5 flex items-center justify-center text-primary font-headline font-black text-lg md:text-2xl shadow-[inset_0_0_15px_rgba(242,202,80,0.1)]">01</div>
         </div>
-        <h2 id="question-text" class="font-headline text-3xl md:text-4xl text-white font-black leading-tight mb-16 tracking-tight drop-shadow-sm max-w-3xl">Carregando...</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-16">
-          <button id="btn-A" onclick="selectAnswer('A')" class="answer-btn group/btn relative overflow-hidden glass-card luxury-border p-6 flex items-center gap-6 text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(242,202,80,0.2)]">
-            <span class="letter-badge flex-shrink-0 w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-headline font-black text-primary text-xl transition-all">A</span>
+        <h2 id="question-text" class="font-headline text-lg md:text-4xl text-white font-black leading-tight mb-6 md:mb-16 tracking-tight drop-shadow-sm max-w-3xl">Carregando...</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 w-full mb-6 md:mb-16">
+          <button id="btn-A" onclick="selectAnswer('A')" class="answer-btn group/btn relative overflow-hidden glass-card luxury-border p-3 md:p-6 flex items-center gap-3 md:gap-6 text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(242,202,80,0.2)]">
+            <span class="letter-badge flex-shrink-0 w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-headline font-black text-primary text-base md:text-xl transition-all">A</span>
             <span id="opt-a-text" class="text-white/80 font-body font-bold text-lg group-hover/btn:text-white transition-colors text-left"></span>
           </button>
-          <button id="btn-B" onclick="selectAnswer('B')" class="answer-btn group/btn relative overflow-hidden glass-card luxury-border p-6 flex items-center gap-6 text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(242,202,80,0.2)]">
-            <span class="letter-badge flex-shrink-0 w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-headline font-black text-primary text-xl transition-all">B</span>
+          <button id="btn-B" onclick="selectAnswer('B')" class="answer-btn group/btn relative overflow-hidden glass-card luxury-border p-3 md:p-6 flex items-center gap-3 md:gap-6 text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(242,202,80,0.2)]">
+            <span class="letter-badge flex-shrink-0 w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-headline font-black text-primary text-base md:text-xl transition-all">B</span>
             <span id="opt-b-text" class="text-white/80 font-body font-bold text-lg group-hover/btn:text-white transition-colors text-left"></span>
           </button>
-          <button id="btn-C" onclick="selectAnswer('C')" class="answer-btn group/btn relative overflow-hidden glass-card luxury-border p-6 flex items-center gap-6 text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(242,202,80,0.2)]">
-            <span class="letter-badge flex-shrink-0 w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-headline font-black text-primary text-xl transition-all">C</span>
+          <button id="btn-C" onclick="selectAnswer('C')" class="answer-btn group/btn relative overflow-hidden glass-card luxury-border p-3 md:p-6 flex items-center gap-3 md:gap-6 text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(242,202,80,0.2)]">
+            <span class="letter-badge flex-shrink-0 w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-headline font-black text-primary text-base md:text-xl transition-all">C</span>
             <span id="opt-c-text" class="text-white/80 font-body font-bold text-lg group-hover/btn:text-white transition-colors text-left"></span>
           </button>
-          <button id="btn-D" onclick="selectAnswer('D')" class="answer-btn group/btn relative overflow-hidden glass-card luxury-border p-6 flex items-center gap-6 text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(242,202,80,0.2)]">
-            <span class="letter-badge flex-shrink-0 w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-headline font-black text-primary text-xl transition-all">D</span>
+          <button id="btn-D" onclick="selectAnswer('D')" class="answer-btn group/btn relative overflow-hidden glass-card luxury-border p-3 md:p-6 flex items-center gap-3 md:gap-6 text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(242,202,80,0.2)]">
+            <span class="letter-badge flex-shrink-0 w-8 h-8 md:w-12 md:h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-headline font-black text-primary text-base md:text-xl transition-all">D</span>
             <span id="opt-d-text" class="text-white/80 font-body font-bold text-lg group-hover/btn:text-white transition-colors text-left"></span>
           </button>
         </div>
         <div class="flex flex-col items-center gap-6">
-          <button id="next-btn" onclick="nextQuestion()" class="bg-primary hover:bg-[#ffe088] text-black font-label font-black tracking-[0.2em] uppercase py-5 px-16 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-[0_10px_40px_rgba(242,202,80,0.3)] hover:shadow-[0_15px_50px_rgba(242,202,80,0.5)]">Próxima Pergunta</button>
+          <button id="next-btn" onclick="nextQuestion()" class="bg-primary hover:bg-[#ffe088] text-black font-label font-black tracking-[0.2em] uppercase py-3 px-8 md:py-5 md:px-16 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-[0_10px_40px_rgba(242,202,80,0.3)] hover:shadow-[0_15px_50px_rgba(242,202,80,0.5)]">Próxima Pergunta</button>
           <div id="warning-msg" class="flex items-center gap-2 opacity-0 transition-opacity text-amber-400">
             <span class="material-symbols-outlined text-[14px]">warning</span>
             <p class="font-body text-[11px] tracking-[0.1em] uppercase font-bold">Selecione uma resposta para continuar</p>

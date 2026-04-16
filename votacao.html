@@ -52,19 +52,19 @@ tailwind.config = {
 </nav>
 <main class="min-h-screen spotlight-bg pt-20 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
 <header class="text-center mb-16 space-y-4">
-<h1 class="text-5xl md:text-7xl font-black font-headline text-on-surface tracking-tight leading-none">
+<h1 class="text-2xl md:text-7xl font-black font-headline text-on-surface tracking-tight leading-none">
 Votação Popular: <br/>
 <span class="text-primary drop-shadow-[0_2px_10px_rgba(242,202,80,0.3)]">Escolha a Melhor Performance</span>
 </h1>
-<p class="text-on-surface-variant max-w-2xl mx-auto text-lg font-light italic">A performance que desafia a realidade. Quem capturou a alma do Rei do Pop com mais maestria nesta temporada?</p>
+<p class="text-on-surface-variant max-w-2xl mx-auto text-sm md:text-lg font-light italic">A performance que desafia a realidade. Quem capturou a alma do Rei do Pop com mais maestria nesta temporada?</p>
 </header>
-<div class="max-w-2xl mx-auto mb-16">
+<div class="max-w-2xl mx-auto mb-8 md:mb-16">
 <div class="relative group">
-<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
-<input class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg py-4 pl-12 pr-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-label" placeholder="Buscar por nome ou número..." type="text"/>
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-base md:text-2xl">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg py-2 md:py-4 pl-9 md:pl-12 pr-4 text-sm md:text-base text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-label" placeholder="Buscar por nome ou número..." type="text"/>
 </div>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 items-start">
+<div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-8 items-start">
 <article onclick="selectCard(this)" class="candidate-card group relative flex flex-col bg-surface-container-low border-t-2 border-primary/20 rounded-lg overflow-hidden">
 <div class="card-accent absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-primary z-10"></div>
 <div class="aspect-square overflow-hidden relative bg-surface-container flex items-center justify-center">
@@ -73,9 +73,9 @@ Votação Popular: <br/>
 <span class="font-bold font-label text-primary">#01</span>
 </div>
 </div>
-<div class="card-body p-6 flex flex-col flex-grow transition-all duration-300">
-<h3 class="card-title text-xl font-headline font-bold text-on-surface mb-6 uppercase tracking-tight transition-colors duration-300">Candidato 1</h3>
-<button onclick="event.stopPropagation(); openVoteModal('Candidato 1', '#01')" class="vote-btn mt-auto w-full py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
+<div class="card-body p-3 md:p-6 flex flex-col flex-grow transition-all duration-300">
+<h3 class="card-title text-sm md:text-xl font-headline font-bold text-on-surface mb-3 md:mb-6 uppercase tracking-tight transition-colors duration-300">Candidato 1</h3>
+<button onclick="event.stopPropagation(); openVoteModal('Candidato 1', '#01')" class="vote-btn mt-auto w-full py-2 md:py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
 </div>
 </article>
 <article onclick="selectCard(this)" class="candidate-card group relative flex flex-col bg-surface-container-low border-t-2 border-primary/20 rounded-lg overflow-hidden">
@@ -86,9 +86,9 @@ Votação Popular: <br/>
 <span class="font-bold font-label text-primary">#02</span>
 </div>
 </div>
-<div class="card-body p-6 flex flex-col flex-grow transition-all duration-300">
-<h3 class="card-title text-xl font-headline font-bold text-on-surface mb-6 uppercase tracking-tight transition-colors duration-300">Candidato 2</h3>
-<button onclick="event.stopPropagation(); openVoteModal('Candidato 2', '#02')" class="vote-btn mt-auto w-full py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
+<div class="card-body p-3 md:p-6 flex flex-col flex-grow transition-all duration-300">
+<h3 class="card-title text-sm md:text-xl font-headline font-bold text-on-surface mb-3 md:mb-6 uppercase tracking-tight transition-colors duration-300">Candidato 2</h3>
+<button onclick="event.stopPropagation(); openVoteModal('Candidato 2', '#02')" class="vote-btn mt-auto w-full py-2 md:py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
 </div>
 </article>
 <article onclick="selectCard(this)" class="candidate-card group relative flex flex-col bg-surface-container-low border-t-2 border-primary/20 rounded-lg overflow-hidden">
@@ -99,9 +99,9 @@ Votação Popular: <br/>
 <span class="font-bold font-label text-primary">#03</span>
 </div>
 </div>
-<div class="card-body p-6 flex flex-col flex-grow transition-all duration-300">
-<h3 class="card-title text-xl font-headline font-bold text-on-surface mb-6 uppercase tracking-tight transition-colors duration-300">Candidato 3</h3>
-<button onclick="event.stopPropagation(); openVoteModal('Candidato 3', '#03')" class="vote-btn mt-auto w-full py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
+<div class="card-body p-3 md:p-6 flex flex-col flex-grow transition-all duration-300">
+<h3 class="card-title text-sm md:text-xl font-headline font-bold text-on-surface mb-3 md:mb-6 uppercase tracking-tight transition-colors duration-300">Candidato 3</h3>
+<button onclick="event.stopPropagation(); openVoteModal('Candidato 3', '#03')" class="vote-btn mt-auto w-full py-2 md:py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
 </div>
 </article>
 <article onclick="selectCard(this)" class="candidate-card group relative flex flex-col bg-surface-container-low border-t-2 border-primary/20 rounded-lg overflow-hidden">
@@ -112,9 +112,9 @@ Votação Popular: <br/>
 <span class="font-bold font-label text-primary">#04</span>
 </div>
 </div>
-<div class="card-body p-6 flex flex-col flex-grow transition-all duration-300">
-<h3 class="card-title text-xl font-headline font-bold text-on-surface mb-6 uppercase tracking-tight transition-colors duration-300">Candidato 4</h3>
-<button onclick="event.stopPropagation(); openVoteModal('Candidato 4', '#04')" class="vote-btn mt-auto w-full py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
+<div class="card-body p-3 md:p-6 flex flex-col flex-grow transition-all duration-300">
+<h3 class="card-title text-sm md:text-xl font-headline font-bold text-on-surface mb-3 md:mb-6 uppercase tracking-tight transition-colors duration-300">Candidato 4</h3>
+<button onclick="event.stopPropagation(); openVoteModal('Candidato 4', '#04')" class="vote-btn mt-auto w-full py-2 md:py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
 </div>
 </article>
 <article onclick="selectCard(this)" class="candidate-card group relative flex flex-col bg-surface-container-low border-t-2 border-primary/20 rounded-lg overflow-hidden">
@@ -125,13 +125,13 @@ Votação Popular: <br/>
 <span class="font-bold font-label text-primary">#05</span>
 </div>
 </div>
-<div class="card-body p-6 flex flex-col flex-grow transition-all duration-300">
-<h3 class="card-title text-xl font-headline font-bold text-on-surface mb-6 uppercase tracking-tight transition-colors duration-300">Candidato 5</h3>
-<button onclick="event.stopPropagation(); openVoteModal('Candidato 5', '#05')" class="vote-btn mt-auto w-full py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
+<div class="card-body p-3 md:p-6 flex flex-col flex-grow transition-all duration-300">
+<h3 class="card-title text-sm md:text-xl font-headline font-bold text-on-surface mb-3 md:mb-6 uppercase tracking-tight transition-colors duration-300">Candidato 5</h3>
+<button onclick="event.stopPropagation(); openVoteModal('Candidato 5', '#05')" class="vote-btn mt-auto w-full py-2 md:py-4 bg-surface-container-highest border border-outline-variant text-secondary font-bold uppercase tracking-widest text-xs transition-all duration-300">Votar</button>
 </div>
 </article>
 </div>
-<div class="mt-20 flex justify-center items-center gap-6">
+<div class="mt-8 md:mt-20 flex justify-center items-center gap-6">
 <button id="btn-prev" onclick="changePage(-1)" class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center text-secondary hover:border-primary hover:text-primary transition-all disabled:opacity-30 disabled:cursor-not-allowed">
 <span class="material-symbols-outlined">chevron_left</span>
 </button>
