@@ -13,8 +13,7 @@ function selectCard(card) {
 function openVoteModal(nome, numero) {
   currentCandidate = { nome, numero };
   document.getElementById('modal-candidate-name').textContent = nome + ' ' + numero;
-  document.getElementById('vote-nome').value  = '';
-  document.getElementById('vote-email').value = '';
+  document.getElementById('vote-nome').value = '';
   document.getElementById('vote-success').classList.add('hidden');
   document.getElementById('vote-error').classList.add('hidden');
   const btn = document.getElementById('vote-submit-btn');
@@ -31,10 +30,9 @@ function closeVoteModal() {
 }
 
 async function confirmVote() {
-  const nome  = document.getElementById('vote-nome').value.trim();
-  const email = document.getElementById('vote-email').value.trim();
-  if (!nome || !email) {
-    alert('Por favor, preencha seu nome e e-mail para votar.');
+  const nome = document.getElementById('vote-nome').value.trim();
+  if (!nome) {
+    alert('Por favor, preencha seu nome para votar.');
     return;
   }
   const btn = document.getElementById('vote-submit-btn');
@@ -47,7 +45,6 @@ async function confirmVote() {
       body: JSON.stringify({
         action: 'submitVoto',
         nomeVotante:     nome,
-        emailVotante:    email,
         candidatoVotado: currentCandidate.nome,
         numeroCandidato: currentCandidate.numero
       })

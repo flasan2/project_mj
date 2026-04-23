@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Finalistas — Admin Golden Shopping Calhau</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+* { box-sizing: border-box; }
+body { background: #0a0a0a; color: #e5e2e1; font-family: 'Manrope', sans-serif; min-height: 100vh; overflow-x: hidden; }
+
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+/* ── Fundo com grade dourada suave ── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(242,202,80,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242,202,80,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ── Spotlight ── */
+.spotlight {
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(242,202,80,0.15) 0%, transparent 65%), #0a0a0a;
+}
+
+/* ── Nav ── */
+.glass-nav {
+  background: rgba(10,10,10,0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(242,202,80,0.1);
+}
+
+/* ── Card principal ── */
+.main-card {
+  background: rgba(20,19,19,0.92);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(242,202,80,0.18);
+  border-radius: 16px;
+  box-shadow: 0 0 60px rgba(0,0,0,0.6), 0 0 40px rgba(242,202,80,0.04);
+}
+
+/* ── Inputs dos candidatos ── */
+.finalist-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(242,202,80,0.07);
+  transition: background 0.2s;
+}
+.finalist-row:last-child { border-bottom: none; }
+.finalist-row:focus-within { background: rgba(242,202,80,0.03); border-radius: 8px; }
+
+.finalist-num {
+  width: 42px; height: 42px; flex-shrink: 0;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif', serif; font-weight: 900;
+  font-size: 15px; line-height: 1;
+  border: 2px solid rgba(242,202,80,0.3);
+  color: rgba(242,202,80,0.6);
+  transition: all 0.3s;
+}
+.finalist-row:focus-within .finalist-num {
+  border-color: #f2ca50;
+  color: #f2ca50;
+  box-shadow: 0 0 12px rgba(242,202,80,0.3);
+}
+
+.finalist-input {
+  flex: 1;
+  background: #111008 !important;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 1px solid rgba(77,70,53,0.6);
+  border-radius: 8px;
+  padding: 13px 16px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  color: #e5e2e1 !important;
+  -webkit-text-fill-color: #e5e2e1 !important;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.finalist-input:focus {
+  border-color: #f2ca50;
+  box-shadow: 0 0 0 2px rgba(242,202,80,0.18);
+  background: #16120a !important;
+}
+.finalist-input::placeholder {
+  color: rgba(153,144,124,0.45);
+  -webkit-text-fill-color: rgba(153,144,124,0.45);
+}
+.finalist-input.has-value { border-color: rgba(242,202,80,0.35); }
+/* evita fundo branco do autofill do browser */
+.finalist-input:-webkit-autofill,
+.finalist-input:-webkit-autofill:hover,
+.finalist-input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #111008 inset !important;
+  -webkit-text-fill-color: #e5e2e1 !important;
+  caret-color: #f2ca50;
+}
+
+/* ── Botão salvar ── */
+.btn-save {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #c8970a 0%, #f2ca50 50%, #c8970a 100%);
+  background-size: 200% 100%;
+  background-position: 100%;
+  color: #1a1000;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-save:hover:not(:disabled) {
+  background-position: 0%;
+  box-shadow: 0 0 30px rgba(242,202,80,0.5), 0 8px 20px rgba(0,0,0,0.4);
+  transform: translateY(-1px);
+}
+.btn-save:active:not(:disabled) { transform: translateY(0); }
+.btn-save:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Preview dos candidatos salvos ── */
+.preview-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(242,202,80,0.08);
+  border: 1px solid rgba(242,202,80,0.2);
+  border-radius: 999px;
+  font-size: 13px;
+  color: #e5e2e1;
+  font-family: 'Manrope', sans-serif;
+}
+.preview-chip .chip-num {
+  font-family: 'Noto Serif', serif;
+  font-weight: 700;
+  color: #f2ca50;
+  font-size: 11px;
+}
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px);
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(.34,1.36,.64,1);
+  z-index: 9999;
+  white-space: nowrap;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.toast.success { background: rgba(30,50,20,0.95); border: 1px solid #4caf50; color: #a5d6a7; }
+.toast.error   { background: rgba(50,10,10,0.95); border: 1px solid #f44336; color: #ef9a9a; }
+
+/* ── Spinner ── */
+.spinner {
+  width: 18px; height: 18px;
+  border: 2px solid rgba(26,16,0,0.3);
+  border-top-color: rgba(26,16,0,0.9);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Título glow ── */
+@keyframes pulse-glow {
+  0%,100% { text-shadow: 0 0 20px rgba(242,202,80,0.3); }
+  50%      { text-shadow: 0 0 40px rgba(242,202,80,0.7), 0 0 80px rgba(242,202,80,0.3); }
+}
+.glow-text { animation: pulse-glow 3s ease-in-out infinite; }
+
+/* ── Estrela decorativa ── */
+@keyframes twinkle { 0%,100% { opacity:0.1; } 50% { opacity:0.6; } }
+.star-deco { position: fixed; border-radius: 50%; background: #f2ca50; pointer-events: none; animation: twinkle ease-in-out infinite; }
+
+/* ── Linha separadora ── */
+.gold-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(242,202,80,0.3), transparent); }
+
+/* ── Loading skeleton ── */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, rgba(242,202,80,0.05) 25%, rgba(242,202,80,0.12) 50%, rgba(242,202,80,0.05) 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: 8px;
+  height: 48px;
+}
+</style>
+</head>
+<body class="grid-bg">
+
+<!-- Estrelas decorativas -->
+<script>
+  for (let i = 0; i < 50; i++) {
+    const s = document.createElement('div');
+    s.className = 'star-deco';
+    const sz = 1 + Math.random() * 2;
+    s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${2+Math.random()*5}s;animation-delay:${Math.random()*4}s;`;
+    document.body.appendChild(s);
+  }
+</script>
+
+<!-- Nav -->
+<nav class="glass-nav fixed top-0 left-0 right-0 z-50">
+  <div style="max-width:900px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px;">
+    <img src="MJ/LOGO2 .png" alt="Logo" style="height:52px;width:auto;" onerror="this.style.display='none'"/>
+    <div style="display:flex;align-items:center;gap:20px;">
+      <a href="votacao.html" style="color:#99907c;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:5px;transition:color 0.2s;" onmouseover="this.style.color='#f2ca50'" onmouseout="this.style.color='#99907c'">
+        <span class="material-symbols-outlined" style="font-size:15px;">how_to_vote</span>Votação
+      </a>
+      <a href="resultado.html" style="color:#99907c;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:5px;transition:color 0.2s;" onmouseover="this.style.color='#f2ca50'" onmouseout="this.style.color='#99907c'">
+        <span class="material-symbols-outlined" style="font-size:15px;">emoji_events</span>Resultado
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Main -->
+<main class="spotlight" style="min-height:100vh;padding:88px 16px 80px;">
+  <div style="max-width:580px;margin:0 auto;">
+
+    <!-- Header -->
+    <header style="text-align:center;margin-bottom:40px;">
+      <div style="font-size:52px;margin-bottom:8px;display:inline-block;filter:drop-shadow(0 0 20px rgba(242,202,80,0.6));">🎤</div>
+      <h1 class="glow-text" style="font-family:'Noto Serif',serif;font-weight:900;font-size:clamp(1.6rem,6vw,2.8rem);color:#f2ca50;line-height:1.1;margin-bottom:10px;">
+        Finalistas
+      </h1>
+      <p style="color:#99907c;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:16px;">Gerencie os candidatos da votação</p>
+      <div class="gold-divider" style="max-width:200px;margin:0 auto;"></div>
+    </header>
+
+    <!-- Card principal -->
+    <div class="main-card" style="padding:32px 28px;margin-bottom:24px;">
+
+      <!-- Título da seção -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px;">
+        <span class="material-symbols-outlined" style="color:#f2ca50;font-size:20px;">edit_note</span>
+        <div>
+          <p style="font-size:13px;font-weight:700;color:#e5e2e1;letter-spacing:0.05em;">Nomes dos Finalistas</p>
+          <p style="font-size:11px;color:#99907c;margin-top:1px;">Preencha até 5 nomes e clique em Salvar</p>
+        </div>
+      </div>
+
+      <!-- Inputs -->
+      <div id="inputs-container" style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+        <!-- Skeleton enquanto carrega -->
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+
+      <div class="gold-divider" style="margin-bottom:24px;"></div>
+
+      <!-- Botão salvar -->
+      <button id="btn-save" class="btn-save" onclick="saveCandidates()" disabled>
+        <span id="btn-text" style="display:flex;align-items:center;justify-content:center;gap:10px;">
+          <span class="material-symbols-outlined" style="font-size:18px;">cloud_upload</span>
+          Salvar Finalistas
+        </span>
+        <div class="spinner" id="btn-spinner"></div>
+      </button>
+
+    </div>
+
+    <!-- Preview dos candidatos atuais -->
+    <div id="preview-section" class="main-card" style="padding:24px 28px;display:none;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+        <span class="material-symbols-outlined" style="color:#f2ca50;font-size:18px;">checklist</span>
+        <p style="font-size:12px;font-weight:700;color:#d0c5af;letter-spacing:0.08em;text-transform:uppercase;">Atualmente na votação</p>
+      </div>
+      <div id="preview-chips" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+    </div>
+
+    <!-- Aviso -->
+    <div style="margin-top:20px;padding:14px 18px;background:rgba(242,202,80,0.04);border:1px solid rgba(242,202,80,0.1);border-radius:10px;display:flex;gap:10px;align-items:flex-start;">
+      <span class="material-symbols-outlined" style="color:#f2ca50;font-size:18px;flex-shrink:0;margin-top:1px;">info</span>
+      <p style="font-size:12px;color:#99907c;line-height:1.6;">
+        Ao salvar, os nomes substituem os candidatos na aba <strong style="color:#d0c5af;">candidatos</strong> do Google Sheets. A votação exibirá automaticamente os novos nomes. Campos em branco são ignorados.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span class="material-symbols-outlined" id="toast-icon" style="font-size:18px;"></span>
+  <span id="toast-msg"></span>
+</div>
+
+<script>
+window.APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoFkll0JRo-sXh1rA8hfUNo6CNU_Te_Bln93DueXxGrJR5LCQ7AnO1kO_PsAA2VB2Acg/exec';
+
+const SLOTS = 5;
+let currentNames = Array(SLOTS).fill('');
+
+// ── Constrói os inputs ──────────────────────────────────
+function buildInputs(names = []) {
+  const container = document.getElementById('inputs-container');
+  container.innerHTML = '';
+
+  for (let i = 0; i < SLOTS; i++) {
+    const val = (names[i] || '').trim();
+
+    const row = document.createElement('div');
+    row.className = 'finalist-row';
+    row.style.padding = '10px 4px';
+
+    row.innerHTML = `
+      <div class="finalist-num">${String(i + 1).padStart(2, '0')}</div>
+      <input
+        class="finalist-input${val ? ' has-value' : ''}"
+        id="input-${i}"
+        type="text"
+        placeholder="Nome do finalista ${i + 1}..."
+        value="${escapeHtml(val)}"
+        maxlength="60"
+        autocomplete="off"
+        oninput="onInputChange(this)"
+      />
+    `;
+    container.appendChild(row);
+  }
+
+  document.getElementById('btn-save').disabled = false;
+  updatePreview(names);
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function onInputChange(input) {
+  if (input.value.trim()) input.classList.add('has-value');
+  else input.classList.remove('has-value');
+}
+
+// ── Preview chips ───────────────────────────────────────
+function updatePreview(names) {
+  const filled = names.filter(n => n && n.trim());
+  const section = document.getElementById('preview-section');
+  const chips   = document.getElementById('preview-chips');
+
+  if (filled.length === 0) { section.style.display = 'none'; return; }
+
+  section.style.display = 'block';
+  chips.innerHTML = filled.map((n, i) =>
+    `<div class="preview-chip">
+      <span class="chip-num">#${String(i+1).padStart(2,'0')}</span>
+      ${escapeHtml(n.trim())}
+    </div>`
+  ).join('');
+}
+
+// ── Toast ───────────────────────────────────────────────
+function showToast(msg, type = 'success') {
+  const toast = document.getElementById('toast');
+  const icon  = document.getElementById('toast-icon');
+  const text  = document.getElementById('toast-msg');
+
+  toast.className = `toast ${type}`;
+  icon.textContent  = type === 'success' ? 'check_circle' : 'error';
+  text.textContent  = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3500);
+}
+
+// ── Carregar candidatos atuais ──────────────────────────
+async function loadCandidates() {
+  try {
+    const url  = (window.APPS_SCRIPT_URL || '/api/script') + '?action=getCandidates';
+    const res  = await fetch(url);
+    const json = await res.json();
+
+    const names = Array(SLOTS).fill('');
+    if (json.success && json.data) {
+      json.data.slice(0, SLOTS).forEach((c, i) => {
+        names[i] = c.candidato || '';
+      });
+    }
+    currentNames = names;
+    buildInputs(names);
+
+  } catch {
+    buildInputs(Array(SLOTS).fill(''));
+    showToast('Não foi possível carregar os nomes atuais', 'error');
+  }
+}
+
+// ── Salvar candidatos ───────────────────────────────────
+async function saveCandidates() {
+  const nomes = [];
+  for (let i = 0; i < SLOTS; i++) {
+    const v = (document.getElementById(`input-${i}`)?.value || '').trim();
+    nomes.push(v);
+  }
+
+  const filled = nomes.filter(n => n);
+  if (filled.length === 0) {
+    showToast('Preencha ao menos um nome', 'error');
+    return;
+  }
+
+  // UI: loading
+  const btn     = document.getElementById('btn-save');
+  const btnText = document.getElementById('btn-text');
+  const spinner = document.getElementById('btn-spinner');
+  btn.disabled = true;
+  btnText.style.display = 'none';
+  spinner.style.display = 'block';
+
+  try {
+    const res  = await fetch(window.APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ action: 'setCandidates', nomes })
+    });
+    const json = await res.json();
+
+    if (json.success) {
+      showToast(`✓ ${filled.length} finalista${filled.length > 1 ? 's' : ''} salvo${filled.length > 1 ? 's' : ''} com sucesso!`, 'success');
+      updatePreview(nomes);
+      currentNames = nomes;
+    } else {
+      throw new Error(json.error || 'Erro ao salvar');
+    }
+  } catch (err) {
+    showToast('Erro ao salvar. Tente novamente.', 'error');
+  } finally {
+    btn.disabled = false;
+    btnText.style.display = 'flex';
+    spinner.style.display = 'none';
+  }
+}
+
+// ── Tecla Enter avança pro próximo input ────────────────
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  const inputs = [...document.querySelectorAll('.finalist-input')];
+  const idx    = inputs.indexOf(document.activeElement);
+  if (idx === -1) return;
+  if (idx < inputs.length - 1) inputs[idx + 1].focus();
+  else saveCandidates();
+});
+
+// ── Init ────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', loadCandidates);
+</script>
+</body>
+</html>

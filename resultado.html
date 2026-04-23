@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Resultado — Golden Shopping Calhau</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "background": "#131313", "surface-tint": "#e9c349", "surface-dim": "#131313",
+        "secondary": "#c6c6c6", "surface-container-high": "#2a2a2a", "on-secondary": "#2f3131",
+        "surface-bright": "#3a3939", "outline-variant": "#4d4635", "surface-variant": "#353534",
+        "primary-fixed": "#ffe088", "outline": "#99907c", "on-primary": "#3c2f00",
+        "tertiary": "#dbccb4", "on-surface": "#e5e2e1", "surface-container-lowest": "#0e0e0e",
+        "surface": "#131313", "on-surface-variant": "#d0c5af", "surface-container-highest": "#353534",
+        "on-background": "#e5e2e1", "inverse-on-surface": "#313030", "surface-container": "#201f1f",
+        "primary-container": "#d4af37", "secondary-container": "#484949", "primary": "#f2ca50",
+        "primary-fixed-dim": "#e9c349", "surface-container-low": "#1c1b1b",
+      },
+      borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+      fontFamily: { "headline": ["Noto Serif"], "body": ["Manrope"], "label": ["Manrope"] }
+    }
+  }
+}
+</script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { background: #080808; overflow-x: hidden; color: #e5e2e1; font-family: 'Manrope', sans-serif; }
+
+/* ── Canvas de fogos — ATRÁS de tudo ── */
+#fw { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
+
+/* ── Conteúdo na frente ── */
+nav, main, footer { position: relative; z-index: 10; }
+
+.glass-nav {
+  background: rgba(8,8,8,0.82);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(242,202,80,0.12);
+}
+
+/* ── Hero ── */
+.hero-bg {
+  background:
+    radial-gradient(ellipse 90% 50% at 50% 0%, rgba(242,202,80,0.14) 0%, transparent 65%),
+    #080808;
+}
+
+/* ── Título ── */
+@keyframes pulse-glow {
+  0%,100% { text-shadow: 0 0 30px rgba(242,202,80,0.5), 0 0 60px rgba(242,202,80,0.2); }
+  50%      { text-shadow: 0 0 60px rgba(242,202,80,1),   0 0 120px rgba(242,202,80,0.6), 0 0 200px rgba(242,202,80,0.2); }
+}
+.title-glow { animation: pulse-glow 2.4s ease-in-out infinite; color: #f2ca50; }
+
+/* ── Crown ── */
+@keyframes crown-bounce {
+  0%,100% { transform: translateY(0) scale(1) rotate(-4deg); }
+  50%      { transform: translateY(-10px) scale(1.15) rotate(4deg); }
+}
+.crown-anim { display: inline-block; animation: crown-bounce 2s ease-in-out infinite; }
+
+/* ── Pódio: estrutura separada em duas linhas ── */
+.podium-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  align-items: end;
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+
+.podium-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.podium-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 4px 12px;
+  gap: 6px;
+}
+
+.podium-bar {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 8px 8px 0 0;
+  padding-bottom: 12px;
+}
+
+.podium-bar.rank-1 {
+  height: 200px;
+  background: linear-gradient(180deg, #ffe566 0%, #f2ca50 25%, #c8970a 65%, #7a5a00 100%);
+  box-shadow: 0 0 50px rgba(242,202,80,0.8), 0 0 100px rgba(242,202,80,0.35), inset 0 1px 0 rgba(255,255,255,0.35);
+}
+.podium-bar.rank-2 {
+  height: 140px;
+  background: linear-gradient(180deg, #f0f0f0 0%, #b0b0b0 50%, #606060 100%);
+  box-shadow: 0 0 25px rgba(200,200,200,0.5), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.podium-bar.rank-3 {
+  height: 100px;
+  background: linear-gradient(180deg, #e08040 0%, #a05020 50%, #5a2800 100%);
+  box-shadow: 0 0 20px rgba(205,127,50,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.rank-num {
+  font-family: 'Noto Serif', serif;
+  font-weight: 900;
+  color: rgba(255,255,255,0.85);
+  line-height: 1;
+}
+
+/* ── Avatar ── */
+.avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  background: #201f1f;
+  flex-shrink: 0;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.av-1 { width: 90px; height: 90px; box-shadow: 0 0 0 3px #f2ca50, 0 0 25px rgba(242,202,80,0.9), 0 0 55px rgba(242,202,80,0.4); }
+.av-2 { width: 70px; height: 70px; box-shadow: 0 0 0 3px #c8c8c8, 0 0 18px rgba(210,210,210,0.6); }
+.av-3 { width: 60px; height: 60px; box-shadow: 0 0 0 3px #cd7f32, 0 0 16px rgba(205,127,50,0.55); }
+
+/* ── Medalha flutuante ── */
+@keyframes float-medal { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+.medal-float { animation: float-medal 2.5s ease-in-out infinite; display: inline-block; }
+
+/* ── Winner ribbon ── */
+.winner-ribbon {
+  background: linear-gradient(90deg, #b07a00, #f2ca50, #b07a00);
+  color: #2a1a00; font-weight: 800; font-size: 9px;
+  letter-spacing: 0.28em; text-transform: uppercase; padding: 4px 18px;
+  clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 50%, calc(100% - 8px) 100%, 8px 100%, 0% 50%);
+}
+
+/* ── Cards detalhados ── */
+.glass-card {
+  background: rgba(22,21,21,0.88);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(242,202,80,0.14);
+  border-radius: 14px;
+}
+
+/* ── Barra de progresso ── */
+.vote-bar-track { height: 8px; background: rgba(60,50,20,0.5); border-radius: 6px; overflow: hidden; }
+.vote-bar-fill  { height: 100%; border-radius: 6px; width: 0%; transition: width 1.6s cubic-bezier(.22,1,.36,1); }
+
+/* ── Entrada dos cards ── */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(50px) scale(0.94); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.card-in { animation: slide-up 0.65s cubic-bezier(.34,1.26,.64,1) both; }
+.card-in:nth-child(1) { animation-delay: 0.05s; }
+.card-in:nth-child(2) { animation-delay: 0.22s; }
+.card-in:nth-child(3) { animation-delay: 0.40s; }
+
+/* ── Spinner ── */
+.spinner {
+  width: 52px; height: 52px;
+  border: 4px solid rgba(242,202,80,0.15);
+  border-top-color: #f2ca50;
+  border-radius: 50%; animation: spin 0.75s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Glitter chuva ── */
+@keyframes glitter-fall {
+  0%   { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+.glitter-piece {
+  position: fixed; pointer-events: none; z-index: 2;
+  border-radius: 2px;
+  animation: glitter-fall linear infinite;
+}
+
+/* ── Campeão: brilho pulsante extra ── */
+@keyframes champion-pulse {
+  0%,100% { box-shadow: 0 0 0 3px #f2ca50, 0 0 25px rgba(242,202,80,0.9), 0 0 55px rgba(242,202,80,0.4); }
+  50%      { box-shadow: 0 0 0 4px #ffe566, 0 0 45px rgba(255,229,102,1), 0 0 90px rgba(242,202,80,0.7), 0 0 130px rgba(242,202,80,0.3); }
+}
+.av-1 { animation: champion-pulse 2s ease-in-out infinite; }
+
+/* ── Estrelas piscando ── */
+@keyframes twinkle { 0%,100% { opacity: 0.15; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.5); } }
+.star { position: fixed; border-radius: 50%; background: #f2ca50; animation: twinkle ease-in-out infinite; pointer-events: none; z-index: 2; }
+</style>
+</head>
+<body>
+
+<!-- Canvas de fogos (z-index 1, atrás do conteúdo) -->
+<canvas id="fw"></canvas>
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px;">
+    <img src="MJ/LOGO2 .png" alt="Logo" style="height:56px;width:auto;display:none;" id="nav-logo"/>
+    <a href="votacao.html" style="color:#c6c6c6;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:6px;" onmouseover="this.style.color='#f2ca50'" onmouseout="this.style.color='#c6c6c6'">
+      <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>Votação
+    </a>
+  </div>
+</nav>
+
+<script>
+  // Mostra logo em telas maiores
+  if (window.innerWidth >= 640) document.getElementById('nav-logo').style.display = 'block';
+</script>
+
+<main class="hero-bg" style="min-height:100vh;padding-top:72px;padding-bottom:80px;padding-left:16px;padding-right:16px;">
+  <div style="max-width:700px;margin:0 auto;">
+
+    <!-- Header -->
+    <header style="text-align:center;margin-bottom:56px;padding-top:24px;">
+      <div class="crown-anim" style="font-size:64px;margin-bottom:8px;">👑</div>
+      <h1 class="title-glow" style="font-family:'Noto Serif',serif;font-weight:900;font-size:clamp(2.2rem,8vw,5rem);line-height:1.05;margin-bottom:12px;">
+        RESULTADO FINAL
+      </h1>
+      <p style="color:#99907c;font-size:12px;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:16px;">
+        As melhores performances do Legado do Rei
+      </p>
+      <div style="width:80px;height:1px;background:linear-gradient(90deg,transparent,#f2ca50,transparent);margin:0 auto;"></div>
+    </header>
+
+    <!-- Loading -->
+    <div id="loading-state" style="display:flex;flex-direction:column;align-items:center;gap:20px;padding:80px 0;">
+      <div class="spinner"></div>
+      <p style="color:#99907c;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;">Apurando votos...</p>
+    </div>
+
+    <!-- Resultados -->
+    <div id="results-container" style="display:none;">
+
+      <!-- Pódio -->
+      <div class="podium-wrapper" id="podium-wrapper">
+
+        <!-- 2° lugar -->
+        <div class="podium-col" id="col-2">
+          <div class="podium-info">
+            <div class="avatar av-2" id="av-2"><img src="MJ/icon-mj.png" style="opacity:.82"/></div>
+            <div style="font-size:22px;" class="medal-float">🥈</div>
+            <p id="name-2" style="font-family:'Noto Serif',serif;font-weight:700;color:#e5e2e1;font-size:12px;line-height:1.3;max-width:120px;"></p>
+            <p id="votes-2" style="color:#9e9e9e;font-size:11px;"></p>
+          </div>
+          <div class="podium-bar rank-2">
+            <span class="rank-num" style="font-size:36px;color:rgba(255,255,255,0.75);">2</span>
+          </div>
+        </div>
+
+        <!-- 1° lugar (centro, maior) -->
+        <div class="podium-col" id="col-1">
+          <div class="podium-info">
+            <div class="avatar av-1" id="av-1"><img src="MJ/icon-mj.png" style="opacity:.95"/></div>
+            <div style="font-size:30px;" class="medal-float">🥇</div>
+            <div class="winner-ribbon">Vencedor</div>
+            <p id="name-1" style="font-family:'Noto Serif',serif;font-weight:700;color:#f2ca50;font-size:14px;line-height:1.3;max-width:140px;"></p>
+            <p id="votes-1" style="color:rgba(242,202,80,0.7);font-size:11px;"></p>
+          </div>
+          <div class="podium-bar rank-1">
+            <span class="rank-num" style="font-size:52px;color:rgba(60,47,0,0.9);">1</span>
+          </div>
+        </div>
+
+        <!-- 3° lugar -->
+        <div class="podium-col" id="col-3">
+          <div class="podium-info">
+            <div class="avatar av-3" id="av-3"><img src="MJ/icon-mj.png" style="opacity:.72"/></div>
+            <div style="font-size:20px;" class="medal-float">🥉</div>
+            <p id="name-3" style="font-family:'Noto Serif',serif;font-weight:700;color:#e5e2e1;font-size:12px;line-height:1.3;max-width:120px;"></p>
+            <p id="votes-3" style="color:#9e9e9e;font-size:11px;"></p>
+          </div>
+          <div class="podium-bar rank-3">
+            <span class="rank-num" style="font-size:30px;color:rgba(255,255,255,0.7);">3</span>
+          </div>
+        </div>
+
+      </div><!-- /podium-wrapper -->
+
+      <!-- Cards detalhados -->
+      <div id="top-cards" style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px;"></div>
+
+      <!-- Total de votos -->
+      <div style="text-align:center;">
+        <div class="glass-card" style="display:inline-flex;flex-direction:column;align-items:center;padding:24px 48px;">
+          <p style="color:#99907c;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:4px;">Total de votos</p>
+          <p id="total-votes" class="title-glow" style="font-family:'Noto Serif',serif;font-weight:900;font-size:48px;line-height:1;">0</p>
+          <p style="color:#4d4635;font-size:10px;margin-top:4px;letter-spacing:0.15em;">votos computados</p>
+        </div>
+      </div>
+
+    </div><!-- /results-container -->
+
+    <!-- Erro -->
+    <div id="error-state" style="display:none;text-align:center;padding:80px 0;">
+      <div style="font-size:48px;margin-bottom:16px;">⚠️</div>
+      <p style="color:#99907c;font-size:13px;margin-bottom:24px;">Não foi possível carregar os resultados.</p>
+      <button onclick="loadResults()" style="padding:12px 32px;border:1px solid rgba(242,202,80,0.3);color:#f2ca50;background:transparent;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;cursor:pointer;border-radius:4px;" onmouseover="this.style.background='rgba(242,202,80,0.08)'" onmouseout="this.style.background='transparent'">Tentar novamente</button>
+    </div>
+
+  </div>
+</main>
+
+<footer style="position:relative;z-index:10;background:#080808;border-top:1px solid rgba(242,202,80,0.1);display:flex;flex-direction:column;align-items:center;gap:20px;padding:48px 40px;">
+  <img src="MJ/LOGO.png" alt="Golden Shopping Calhau" style="height:60px;width:auto;opacity:.88;filter:drop-shadow(0 0 12px rgba(242,202,80,0.3));"/>
+  <p style="color:#4d4635;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;">© 2026 Golden Shopping Calhau | Competição de Performance</p>
+</footer>
+
+<script>
+window.APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoFkll0JRo-sXh1rA8hfUNo6CNU_Te_Bln93DueXxGrJR5LCQ7AnO1kO_PsAA2VB2Acg/exec';
+
+// ═══════════════════════════════════════════════
+//  FOGOS DE ARTIFÍCIO — motor reescrito do zero
+// ═══════════════════════════════════════════════
+const fw  = document.getElementById('fw');
+const ctx = fw.getContext('2d');
+let W, H;
+const resize = () => { W = fw.width = innerWidth; H = fw.height = innerHeight; };
+addEventListener('resize', resize); resize();
+
+// Paleta com RGB pré-calculado para alpha fácil
+const PALETTE = [
+  [242,202, 80],  // ouro
+  [255,229,102],  // ouro claro
+  [255,170,  0],  // âmbar
+  [200,150, 10],  // ouro escuro
+  [255,255,255],  // branco
+  [255, 96, 96],  // vermelho
+  [ 96,200,255],  // azul
+  [160,255,128],  // verde
+  [255,128,220],  // rosa
+];
+
+function rColor() { return PALETTE[Math.floor(Math.random() * PALETTE.length)]; }
+function toRgba([r,g,b], a) { return `rgba(${r},${g},${b},${a.toFixed(3)})`; }
+
+let particles = [];
+let rockets   = [];
+
+// ── Foguete ──────────────────────────────────
+function launchRocket(fromX) {
+  const x = fromX ?? W * (0.08 + Math.random() * 0.84);
+  rockets.push({
+    x, y: H + 4,
+    vx: (Math.random() - 0.5) * 3,
+    vy: -(14 + Math.random() * 9),
+    targetY: H * (0.05 + Math.random() * 0.38),
+    rgb: rColor(),
+    trail: []
+  });
+}
+
+// ── Explosão ─────────────────────────────────
+function explode(x, y, rgb) {
+  const count = 130 + Math.floor(Math.random() * 80);
+
+  // anel principal de faíscas
+  for (let i = 0; i < count; i++) {
+    const angle = (Math.PI * 2 / count) * i + (Math.random() - 0.5) * 0.25;
+    const speed = 2.5 + Math.random() * 6.5;
+    const col   = Math.random() > 0.25 ? rgb : PALETTE[Math.floor(Math.random() * PALETTE.length)];
+    particles.push({
+      x, y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      life: 0.9 + Math.random() * 0.1,
+      decay: 0.008 + Math.random() * 0.016,
+      size: 1.8 + Math.random() * 3,
+      rgb: col,
+      grav: 0.07 + Math.random() * 0.05,
+      drag: 0.96 + Math.random() * 0.02,
+      star: Math.random() > 0.65,     // algumas partículas em forma de estrela
+      glint: Math.random() > 0.55,    // algumas ficam brancas no início
+    });
+  }
+
+  // estilhaços dourados extras para 1° lugar
+  if (rgb === PALETTE[0] || rgb === PALETTE[1]) {
+    for (let i = 0; i < 30; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 0.8 + Math.random() * 2;
+      particles.push({
+        x: x + (Math.random()-0.5)*10, y: y + (Math.random()-0.5)*10,
+        vx: Math.cos(angle)*speed, vy: Math.sin(angle)*speed - 1,
+        life: 0.8 + Math.random() * 0.2,
+        decay: 0.007 + Math.random() * 0.01,
+        size: 2.5 + Math.random() * 4,
+        rgb: PALETTE[4], // branco
+        grav: 0.04, drag: 0.98, star: true, glint: false,
+      });
+    }
+  }
+}
+
+// ── Desenha estrela de 4 pontas ───────────────
+function drawStar(cx, cy, r, alpha, rgb) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle   = toRgba(rgb, 1);
+  ctx.translate(cx, cy);
+  ctx.beginPath();
+  for (let i = 0; i < 8; i++) {
+    const a = (i * Math.PI) / 4;
+    const rad = i % 2 === 0 ? r : r * 0.4;
+    i === 0 ? ctx.moveTo(Math.cos(a)*rad, Math.sin(a)*rad)
+            : ctx.lineTo(Math.cos(a)*rad, Math.sin(a)*rad);
+  }
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+// ── Loop principal ────────────────────────────
+function loop() {
+  // fade suave — 0.13 = deixa rastros longos mas some
+  ctx.fillStyle = 'rgba(8,8,8,0.13)';
+  ctx.fillRect(0, 0, W, H);
+
+  // foguetes
+  for (let i = rockets.length - 1; i >= 0; i--) {
+    const r = rockets[i];
+    r.trail.push({ x: r.x, y: r.y });
+    if (r.trail.length > 14) r.trail.shift();
+    r.x += r.vx; r.y += r.vy; r.vy += 0.25;
+
+    // rastro do foguete
+    r.trail.forEach((t, ti) => {
+      const a = (ti / r.trail.length) * 0.7;
+      const s = 1.5 * (ti / r.trail.length);
+      ctx.beginPath();
+      ctx.arc(t.x, t.y, s, 0, Math.PI * 2);
+      ctx.fillStyle = toRgba(r.rgb, a);
+      ctx.fill();
+    });
+
+    // cabeça do foguete
+    ctx.beginPath();
+    ctx.arc(r.x, r.y, 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = toRgba(PALETTE[4], 0.9);
+    ctx.fill();
+
+    if (r.y <= r.targetY) {
+      explode(r.x, r.y, r.rgb);
+      rockets.splice(i, 1);
+    }
+  }
+
+  // partículas
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+    p.vx *= p.drag; p.vy *= p.drag;
+    p.vy += p.grav;
+    p.x  += p.vx;  p.y += p.vy;
+    p.life -= p.decay;
+
+    if (p.life <= 0) { particles.splice(i, 1); continue; }
+
+    const alpha = Math.min(p.life, 1);
+    const col   = (p.glint && p.life > 0.7) ? PALETTE[4] : p.rgb;
+
+    if (p.star) {
+      drawStar(p.x, p.y, p.size * alpha, alpha, col);
+    } else {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * Math.max(alpha, 0.15), 0, Math.PI * 2);
+      ctx.fillStyle = toRgba(col, alpha);
+      ctx.fill();
+    }
+  }
+
+  requestAnimationFrame(loop);
+}
+loop();
+
+// ── Agendador de foguetes ─────────────────────
+function salve(n = 2) {
+  for (let i = 0; i < n; i++) setTimeout(launchRocket, i * 160);
+}
+
+function scheduleRockets() {
+  const n = 2 + Math.floor(Math.random() * 3);
+  salve(n);
+  setTimeout(scheduleRockets, 900 + Math.random() * 1400);
+}
+setTimeout(() => { salve(3); setTimeout(scheduleRockets, 2000); }, 600);
+
+// ── Rafale campeão (disparado após revelar) ───
+function championBurst(x) {
+  for (let i = 0; i < 6; i++) {
+    setTimeout(() => {
+      launchRocket(x ?? W * (0.3 + Math.random() * 0.4));
+    }, i * 130);
+  }
+}
+
+// ═══════════════════════════════════════════════
+//  ESTRELAS PISCANDO
+// ═══════════════════════════════════════════════
+(function createStars() {
+  for (let i = 0; i < 70; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = 1 + Math.random() * 2.5;
+    s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${1.8+Math.random()*4}s;animation-delay:${Math.random()*5}s;`;
+    document.body.appendChild(s);
+  }
+})();
+
+// ═══════════════════════════════════════════════
+//  CHUVA DE GLITTER DOURADO
+// ═══════════════════════════════════════════════
+(function createGlitter() {
+  for (let i = 0; i < 40; i++) {
+    const g = document.createElement('div');
+    g.className = 'glitter-piece';
+    const size = 3 + Math.random() * 5;
+    const colors = ['#f2ca50','#ffe080','#ffd700','#ffffff','#ffaa00'];
+    const col = colors[Math.floor(Math.random() * colors.length)];
+    g.style.cssText = `
+      width:${size}px;height:${size}px;
+      background:${col};
+      border-radius:${Math.random()>0.5?'50%':'2px'};
+      left:${Math.random()*100}%;
+      top:-20px;
+      opacity:${0.5+Math.random()*0.5};
+      animation-duration:${3+Math.random()*5}s;
+      animation-delay:${Math.random()*6}s;
+    `;
+    document.body.appendChild(g);
+  }
+})();
+
+// ═══════════════════════════════════════════════
+//  CONTADOR ANIMADO
+// ═══════════════════════════════════════════════
+function animCount(el, target, dur = 1400) {
+  const t0 = performance.now();
+  (function tick(now) {
+    const prog = Math.min((now - t0) / dur, 1);
+    const ease = 1 - Math.pow(1 - prog, 3);
+    el.textContent = Math.round(ease * target);
+    if (prog < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+
+// ═══════════════════════════════════════════════
+//  CARREGAR RESULTADOS
+// ═══════════════════════════════════════════════
+async function loadResults() {
+  document.getElementById('loading-state').style.display = 'flex';
+  document.getElementById('results-container').style.display = 'none';
+  document.getElementById('error-state').style.display = 'none';
+
+  try {
+    const url  = (window.APPS_SCRIPT_URL || '/api/script') + '?action=getVotos';
+    const res  = await fetch(url);
+    const json = await res.json();
+
+    if (!json.success || !json.data || json.data.length === 0) throw new Error('sem dados');
+
+    // Somar votos por candidato
+    const tally = {};
+    json.data.forEach(row => {
+      const key = (row.candidatoVotado || '').trim();
+      if (!key) return;
+      tally[key] = (tally[key] || 0) + 1;
+    });
+
+    const sorted = Object.entries(tally)
+      .map(([nome, votos]) => ({ nome, votos }))
+      .sort((a, b) => b.votos - a.votos);
+
+    const top3  = sorted.slice(0, 3);
+    const total = sorted.reduce((s, c) => s + c.votos, 0);
+
+    renderResults(top3, total);
+
+  } catch {
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('error-state').style.display = 'block';
+  }
+}
+
+// ═══════════════════════════════════════════════
+//  RENDERIZAR PÓDIO + CARDS
+// ═══════════════════════════════════════════════
+function renderResults(top3, total) {
+  document.getElementById('loading-state').style.display = 'none';
+  document.getElementById('results-container').style.display = 'block';
+
+  const maxVotes = top3[0]?.votos || 1;
+
+  // Pódio (ordem visual: 2°, 1°, 3°; dados: índice 0=1°, 1=2°, 2=3°)
+  [[1, 2], [0, 1], [2, 3]].forEach(([dataIdx, rank]) => {
+    const c = top3[dataIdx];
+    if (!c) return;
+    document.getElementById(`name-${rank}`).textContent  = c.nome;
+    document.getElementById(`votes-${rank}`).textContent = c.votos === 1 ? '1 voto' : `${c.votos} votos`;
+  });
+
+  // Total animado
+  animCount(document.getElementById('total-votes'), total);
+
+  // Cards detalhados
+  const container = document.getElementById('top-cards');
+  container.innerHTML = '';
+
+  const rankStyles = [
+    { borderColor: 'rgba(242,202,80,0.55)',  bg: 'rgba(242,202,80,0.07)', barClass: 'gold-bar',   icon: '🥇', textColor: '#f2ca50',   barRgb: '242,202,80' },
+    { borderColor: 'rgba(200,200,200,0.25)', bg: 'rgba(200,200,200,0.04)', barClass: 'silver-bar', icon: '🥈', textColor: '#d4d4d4',   barRgb: '180,180,180' },
+    { borderColor: 'rgba(205,127,50,0.35)',  bg: 'rgba(205,127,50,0.05)', barClass: 'bronze-bar', icon: '🥉', textColor: '#cd8040',   barRgb: '205,127,50' },
+  ];
+
+  top3.forEach((c, i) => {
+    const s   = rankStyles[i];
+    const pct = Math.round((c.votos / maxVotes) * 100);
+
+    const div = document.createElement('div');
+    div.className = 'card-in glass-card';
+    div.style.cssText = `padding:20px 24px;border-color:${s.borderColor};background:${s.bg};`;
+
+    div.innerHTML = `
+      <div style="display:flex;align-items:center;gap:18px;">
+        <div style="font-size:clamp(28px,6vw,44px);flex-shrink:0;">${s.icon}</div>
+        <div style="flex:1;min-width:0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;">
+            <p style="font-family:'Noto Serif',serif;font-weight:700;color:${s.textColor};font-size:clamp(14px,3vw,20px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${c.nome}</p>
+            <div style="text-align:right;flex-shrink:0;">
+              <p style="font-family:'Noto Serif',serif;font-weight:900;color:${s.textColor};font-size:clamp(20px,4vw,32px);line-height:1;">${c.votos}</p>
+              <p style="color:#4d4635;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;">${c.votos === 1 ? 'voto' : 'votos'}</p>
+            </div>
+          </div>
+          <div class="vote-bar-track">
+            <div class="vote-bar-fill" data-pct="${pct}" style="background:linear-gradient(90deg,rgba(${s.barRgb},0.6),rgba(${s.barRgb},1));"></div>
+          </div>
+          <p style="color:#4d4635;font-size:9px;margin-top:6px;letter-spacing:0.15em;">${pct}% dos votos do top 3</p>
+        </div>
+      </div>`;
+    container.appendChild(div);
+  });
+
+  // Animar barras de progresso
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    document.querySelectorAll('.vote-bar-fill').forEach(b => { b.style.width = b.dataset.pct + '%'; });
+  }));
+
+  // Rafale de fogos ao revelar o campeão
+  setTimeout(() => championBurst(), 400);
+  setTimeout(() => championBurst(), 1800);
+}
+
+document.addEventListener('DOMContentLoaded', loadResults);
+</script>
+</body>
+</html>
